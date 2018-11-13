@@ -23,13 +23,21 @@
     </head>
     <body>
         <ul>
-            <%for (Iterator it = itCursos; it.hasNext();) {
+            <%int cont = 0;
+                for (Iterator it = itCursos; it.hasNext();) {
                     bCurso curso = (bCurso) it.next();
             %>
             <li><%=curso.getCodigo() + " - " + curso.getNombre() + " - " + curso.getGrupo()%><a href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></li>
                 <%
+                        cont++;
+                    }
+                    if (cont == 0) {
+                %>
+            <li>No hay Cursos</li>
+                <%
                     }
                 %>
+
         </ul>
     </body>
 </html>

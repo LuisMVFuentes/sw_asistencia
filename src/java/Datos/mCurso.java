@@ -26,7 +26,7 @@ public class mCurso {
     }
 
     public List<bCurso> sel_curso(int idCurso) {
-        String sql = "SELECT * FROM curso WHERE idcurso = " + idCurso;
+        String sql = "SELECT * FROM curso WHERE idCurso = " + idCurso;
         ResultSet rs = cado.Recuperar(sql);
         return list(rs);
 

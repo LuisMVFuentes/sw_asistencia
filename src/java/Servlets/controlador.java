@@ -1,9 +1,13 @@
 package Servlets;
 
+import Beans.bCarrera;
 import Beans.bCurso;
 import Beans.bDocente;
+import Beans.bSesion;
+import Datos.mCarrera;
 import Datos.mCurso;
 import Datos.mDocente;
+import Datos.mSesion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
@@ -26,6 +30,8 @@ public class controlador extends HttpServlet {
             int opc = Integer.parseInt(request.getParameter("opc"));
             mDocente modelDocente = new mDocente();
             mCurso modelCurso = new mCurso();
+            mCarrera modelCarrera = new mCarrera();
+            mSesion modelSesion = new mSesion();
             switch (opc) {
                 case 0:
                     response.sendRedirect("index.html");
@@ -61,22 +67,41 @@ public class controlador extends HttpServlet {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         int idCurso = Integer.parseInt(request.getParameter("idCurso"));
-                        List<bCurso> cs = modelCurso.cursos_docente(idCurso);
+                        List<bCurso> cs = modelCurso.sel_curso(idCurso);
                         if (cs.size() == 1) {
+                            List<bCarrera> cs1 = modelCarrera.sel_carrera(cs.get(0).getCar_idcarrera());
+                            List<bSesion> ses = modelSesion.sesiones(idCurso);
                             rd = request.getRequestDispatcher("curso.jsp");
+                            session.setAttribute("Sesiones", ses.iterator());
                             session.setAttribute("CursoSel", cs.get(0));
+                            session.setAttribute("Carrera", cs1.get(0));
                             rd.forward(request, response);
                         } else {
                             response.sendRedirect("controlador?opc=2");
                         }
                     }
                     break;
+                case 211:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else if (session.getAttribute("Carrera") != null
+                            && session.getAttribute("CursoSel") != null
+                            && session.getAttribute("Sesiones") != null) {
+                        rd = request.getRequestDispatcher("alumnos.jsp");
+                        
+                        rd.forward(request, response);
+                    } else {
+                        response.sendRedirect("controlador?opc=1");
+                    }
+                    break;
                 default:
-                    out.print("        <h1>[Default] Controlador</h1>\n"
-                            + "        <h2>../controlador?opc=" + opc + "</h2>"
-                            + "        <p>Error en controlador, no se ha encontrado la opción ingresada :(</p>\n"
-                            + "        <a href=\"controlador?opc=0\">Ir al Inicio</a>\n"
-                            + "");
+                    out.print("<h1>[Default] Controlador</h1>\n"
+                            + "<h2>../controlador?opc=" + opc + "</h2>"
+                            + "<p>Error en controlador, no se ha encontrado "
+                            + "la opción ingresada :(</p>\n"
+                            + "<a href=\"controlador?opc=0\">Ir al Inicio</a>\n");
                     break;
             }
         }
