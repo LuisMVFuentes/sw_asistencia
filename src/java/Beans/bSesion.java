@@ -28,7 +28,7 @@ public class bSesion {
     public bSesion(ResultSet rs) {
         try {
             this.idsesiones = rs.getInt(1);
-            this.fecha = rs.getString(2);
+            this.fecha = rs.getDate(2).toString();
             this.hora_inicio = rs.getString(3);
             this.hora_fin = rs.getString(4);
             this.cur_idcurso = rs.getInt(5);

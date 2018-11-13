@@ -99,7 +99,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sw_asistencia`.`sesion` (
   `idsesiones` INT(11) NOT NULL,
-  `fecha` VARCHAR(2) NOT NULL,
+  `fecha` DATE NOT NULL,
   `hora_inicio` VARCHAR(5) NULL DEFAULT NULL,
   `hora_fin` VARCHAR(5) NULL DEFAULT NULL,
   `cur_idcurso` INT(11) NOT NULL,
