@@ -49,11 +49,15 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sw_asistencia`.`curso` (
   `idcurso` INT(11) NOT NULL,
+  `codigo` VARCHAR(5) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
-  `ciclo` VARCHAR(45) NOT NULL,
+  `grupo` VARCHAR(3) NOT NULL,
+  `ciclo` INT(11) NOT NULL,
   `doc_iddocente` INT(11) NOT NULL,
   `car_idcarrera` INT(11) NOT NULL,
   PRIMARY KEY (`idcurso`),
+  UNIQUE INDEX `codigo` (`codigo` ASC),
+  UNIQUE INDEX `idcurso` (`idcurso` ASC),
   INDEX `fk_curso_docente1_idx` (`doc_iddocente` ASC),
   INDEX `fk_curso_carrera1_idx` (`car_idcarrera` ASC),
   CONSTRAINT `fk_curso_carrera1`
@@ -95,9 +99,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sw_asistencia`.`sesion` (
   `idsesiones` INT(11) NOT NULL,
-  `fecha` DATE NOT NULL,
-  `hora_inicio` VARCHAR(45) NULL DEFAULT NULL,
-  `hora_fin` VARCHAR(45) NULL DEFAULT NULL,
+  `fecha` VARCHAR(2) NOT NULL,
+  `hora_inicio` VARCHAR(5) NULL DEFAULT NULL,
+  `hora_fin` VARCHAR(5) NULL DEFAULT NULL,
   `cur_idcurso` INT(11) NOT NULL,
   PRIMARY KEY (`idsesiones`),
   INDEX `fk_sesion_curso1_idx` (`cur_idcurso` ASC),
@@ -114,19 +118,20 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sw_asistencia`.`sesion_has_estudiante`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sw_asistencia`.`sesion_has_estudiante` (
-  `ses_idsesiones` INT(11) NOT NULL,
-  `est_codigo` INT(11) NOT NULL,
-  `estado` VARCHAR(45) NOT NULL,
-  `observaciones` VARCHAR(45) NULL,
-  INDEX `fk_sesion_has_estudiante_estudiante1_idx` (`est_codigo` ASC),
-  INDEX `fk_sesion_has_estudiante_sesion_idx` (`ses_idsesiones` ASC),
+  `sesion_idsesiones` INT(11) NOT NULL,
+  `estudiante_codigo` VARCHAR(7) NOT NULL,
+  `estado` VARCHAR(1) NOT NULL,
+  `observacion` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`sesion_idsesiones`, `estudiante_codigo`),
+  INDEX `fk_sesion_has_estudiante_estudiante1_idx` (`estudiante_codigo` ASC),
+  INDEX `fk_sesion_has_estudiante_sesion1_idx` (`sesion_idsesiones` ASC),
   CONSTRAINT `fk_sesion_has_estudiante_estudiante1`
-    FOREIGN KEY (`est_codigo`)
+    FOREIGN KEY (`estudiante_codigo`)
     REFERENCES `sw_asistencia`.`estudiante` (`codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_sesion_has_estudiante_sesion`
-    FOREIGN KEY (`ses_idsesiones`)
+  CONSTRAINT `fk_sesion_has_estudiante_sesion1`
+    FOREIGN KEY (`sesion_idsesiones`)
     REFERENCES `sw_asistencia`.`sesion` (`idsesiones`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
