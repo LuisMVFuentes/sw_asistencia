@@ -6,11 +6,20 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>SW Asistencia</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/script.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>SW Asistencia<br>Inicie Sesión</h1>
+        <form onsubmit="return validar()">
+            <label>Usuario</label>
+            <input type="text" name="txtUser" placeholder="Cod.Docente o Correo" id="txtUser">
+            <label>Contraseña</label>
+            <input type="password" name="txtPass" id="txtPass" placeholder="Contraseña">
+            <input type="submit" value="Ingresar">
+            <input type="reset" value="Vaciar">
+        </form>
     </body>
 </html>
