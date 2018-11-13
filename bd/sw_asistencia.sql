@@ -34,10 +34,12 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sw_asistencia`.`docente` (
   `iddocente` INT(11) NOT NULL,
+  `codigo` VARCHAR(7) NOT NULL,
   `nombre_doc` VARCHAR(45) NOT NULL,
   `correo` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`iddocente`))
+  PRIMARY KEY (`iddocente`),
+  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -72,7 +74,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sw_asistencia`.`estudiante`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sw_asistencia`.`estudiante` (
-  `codigo` INT(11) NOT NULL,
+  `codigo` VARCHAR(7) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `correo` VARCHAR(45) NULL DEFAULT NULL,
   `celular` VARCHAR(45) NULL DEFAULT NULL,
