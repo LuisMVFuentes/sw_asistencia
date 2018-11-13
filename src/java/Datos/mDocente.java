@@ -39,7 +39,4 @@ public class mDocente {
         return ds;
     }
 
-    public static void main(String[] args) {
-        System.out.println((new mDocente().login("jpd@gmail.com", "jpd12345")).get(0).toString());
-    }
 }

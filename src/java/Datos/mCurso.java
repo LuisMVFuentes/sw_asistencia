@@ -1,6 +1,9 @@
 package Datos;
 
 import Beans.bCurso;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,8 +17,33 @@ public class mCurso {
         String sql = "INSERT INTO curso VALUES (?, ?, ?, ?, ?, ?)";
         return cado.Ejecutar(sql, c.getParametros());
     }
-    
-    public static void main(String[] args) {
-        System.out.println(new mCurso().insertar(new bCurso(34577, "IS151", "TALLER DE COMPUTACION E INFORMATICA BASICA", "18A", 2, 12345, 23456)));
+
+    public List<bCurso> cursos_docente(int idDoc) {
+        String sql = "SELECT * FROM curso WHERE doc_iddocente = " + idDoc;
+        ResultSet rs = cado.Recuperar(sql);
+        return list(rs);
+
     }
+
+    public List<bCurso> sel_curso(int idCurso) {
+        String sql = "SELECT * FROM curso WHERE idcurso = " + idCurso;
+        ResultSet rs = cado.Recuperar(sql);
+        return list(rs);
+
+    }
+
+    private List<bCurso> list(ResultSet rs) {
+        List<bCurso> cs = new ArrayList<>();
+        try {
+            rs.beforeFirst();
+            while (rs.next()) {
+                bCurso c = new bCurso(rs);
+                cs.add(c);
+            }
+        } catch (Exception e) {
+            cs = new ArrayList<>();
+        }
+        return cs;
+    }
+
 }

@@ -15,7 +15,4 @@ public class mCarrera {
         return cado.Ejecutar(sql, c.getParametros());
     }
 
-    public static void main(String[] args) {
-        System.out.println(new mCarrera().insertar(new bCarrera(23467, "Arquitectura", "FICSA")));
-    }
 }

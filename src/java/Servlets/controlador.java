@@ -1,9 +1,12 @@
 package Servlets;
 
+import Beans.bCurso;
 import Beans.bDocente;
+import Datos.mCurso;
 import Datos.mDocente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +25,7 @@ public class controlador extends HttpServlet {
             HttpSession session = request.getSession();
             int opc = Integer.parseInt(request.getParameter("opc"));
             mDocente modelDocente = new mDocente();
+            mCurso modelCurso = new mCurso();
             switch (opc) {
                 case 0:
                     response.sendRedirect("index.html");
@@ -36,6 +40,35 @@ public class controlador extends HttpServlet {
                         rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=0");
+                    }
+                    break;
+                case 2:
+                    bDocente docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        List<bCurso> cs = modelCurso.cursos_docente(docente.getIddocente());
+                        rd = request.getRequestDispatcher("cursos.jsp");
+                        session.setAttribute("Cursos", cs.iterator());
+                        rd.forward(request, response);
+                    }
+                    break;
+                case 21:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        int idCurso = Integer.parseInt(request.getParameter("idCurso"));
+                        List<bCurso> cs = modelCurso.cursos_docente(idCurso);
+                        if (cs.size() == 1) {
+                            rd = request.getRequestDispatcher("curso.jsp");
+                            session.setAttribute("CursoSel", cs.get(0));
+                            rd.forward(request, response);
+                        } else {
+                            response.sendRedirect("controlador?opc=2");
+                        }
                     }
                     break;
                 default:
