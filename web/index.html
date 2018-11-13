@@ -13,13 +13,14 @@ and open the template in the editor.
     </head>
     <body>
         <h1>SW Asistencia<br>Inicie Sesión</h1>
-        <form onsubmit="return validar()">
+        <form action="controlador" onsubmit="return validar()">
             <label>Usuario</label>
             <input type="text" name="txtUser" placeholder="Cod.Docente o Correo" id="txtUser">
             <label>Contraseña</label>
             <input type="password" name="txtPass" id="txtPass" placeholder="Contraseña">
             <input type="submit" value="Ingresar">
             <input type="reset" value="Vaciar">
+            <input type="hidden" value="1" name="opc">
         </form>
     </body>
 </html>
