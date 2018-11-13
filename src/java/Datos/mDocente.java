@@ -18,7 +18,14 @@ public class mDocente {
         return cado.Ejecutar(sql, d.getParametros());
     }
 
-    public List<bDocente> list(ResultSet rs) {
+    public List<bDocente> login(String user, String pass) {
+        String sql = "SELECT * FROM `docente` WHERE (codigo = ? OR correo = ?) AND password=?";
+        Object[] os = {user, user, pass};
+        ResultSet rs = cado.Recuperar(sql, os);
+        return list(rs);
+    }
+
+    private List<bDocente> list(ResultSet rs) {
         List<bDocente> ds = new ArrayList<>();
         try {
             rs.beforeFirst();
@@ -33,7 +40,6 @@ public class mDocente {
     }
 
     public static void main(String[] args) {
-        bDocente d = new bDocente(12345, "263194H", "Juanita Paredez Dominguez", "jpd@gmail.com", "jpd12345");
-        System.out.println(new mDocente().insertar(d));
+        System.out.println((new mDocente().login("jpd@gmail.com", "jpd12345")).get(0).toString());
     }
 }

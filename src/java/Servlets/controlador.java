@@ -1,11 +1,16 @@
 package Servlets;
 
+import Beans.bDocente;
+import Datos.mDocente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class controlador extends HttpServlet {
 
@@ -13,10 +18,25 @@ public class controlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            RequestDispatcher rd = null;
+            HttpSession session = request.getSession();
             int opc = Integer.parseInt(request.getParameter("opc"));
+            mDocente modelDocente = new mDocente();
             switch (opc) {
                 case 0:
                     response.sendRedirect("index.html");
+                    break;
+                case 1:
+                    String user = request.getParameter("txtUser");
+                    String pass = request.getParameter("txtPass");
+                    List<bDocente> ds = modelDocente.login(user, pass);
+                    if (ds.size() == 1) {
+                        rd = request.getRequestDispatcher("home.jsp");
+                        session.setAttribute("Docente", ds.get(0));
+                        rd.forward(request, response);
+                    } else {
+                        response.sendRedirect("controlador?opc=0");
+                    }
                     break;
                 default:
                     out.print("        <h1>[Default] Controlador</h1>\n"

@@ -79,11 +79,11 @@ public class bDocente {
 
     public Object[] getParametros() {
         Object[] os = new Object[5];
-        os[0] = iddocente;
-        os[1] = codigo;
-        os[2] = nombre_doc;
-        os[3] = correo;
-        os[4] = password;
+        os[0] = this.iddocente;
+        os[1] = this.codigo;
+        os[2] = this.nombre_doc;
+        os[3] = this.correo;
+        os[4] = this.password;
         return os;
     }
 
