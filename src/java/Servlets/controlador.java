@@ -44,8 +44,10 @@ public class controlador extends HttpServlet {
                     String pass = request.getParameter("txtPass");
                     List<bDocente> ds = modelDocente.login(user, pass);
                     if (ds.size() == 1) {
+                        List<bCurso> cs = modelCurso.cursos_docente(ds.get(0).getIddocente());
                         rd = request.getRequestDispatcher("home.jsp");
                         session.setAttribute("Docente", ds.get(0));
+                        session.setAttribute("Cursos", cs.iterator());
                         rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=0");
@@ -76,7 +78,7 @@ public class controlador extends HttpServlet {
                             List<bSesion> ses = modelSesion.sesiones(idCurso);
                             rd = request.getRequestDispatcher("curso.jsp");
                             session.setAttribute("Sesiones", ses.iterator());
-                            session.setAttribute("CursoSel",(bCurso) cs.get(0));
+                            session.setAttribute("CursoSel", (bCurso) cs.get(0));
                             session.setAttribute("Carrera", cs1.get(0));
                             rd.forward(request, response);
                         } else {
@@ -117,9 +119,9 @@ public class controlador extends HttpServlet {
                             List<bEstudiante> es = me.listarE(request.getParameter("codigo"));
                             List<bSesion_Estudiante> estados = ms.estados(estudiante_codigo);
                             session.setAttribute("Estados", estados.iterator());
-                            session.setAttribute("EstudianteSel",(bEstudiante)es.get(0));
+                            session.setAttribute("EstudianteSel", (bEstudiante) es.get(0));
                             rd.forward(request, response);
-                        }else{
+                        } else {
                             response.sendRedirect("controlador?opc=1");
                         }
                     }

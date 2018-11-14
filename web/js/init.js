@@ -3,7 +3,6 @@
 
         $('.sidenav').sidenav();
         $('.parallax').parallax();
-        $('.sidenav').sidenav();
         $('.tooltipped').tooltip();
         $('.modal').modal();
         $('.modal').modal();
