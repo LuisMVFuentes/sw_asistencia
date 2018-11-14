@@ -33,13 +33,38 @@
                 </div>
             </div>
         </nav>
+        <main>
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <br><br>
+                    <h1 class="header center teal-text text-lighten-2">SW Asistencia</h1>
+                    <div class="row center">
+                        <h5 class="header col s12 light">Bienvenido <%=docente.toString()%></h5>
+                        <a href="controlador?opc=2">Cursos</a>
+                        <br>
+                        <a href="controlador?opc=7">Reporte</a>
+                    </div>
+                    <!--<div class="row center">
+                        <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+                    </div>-->
+                    <br><br>
 
-        <h2><%=docente.toString()%></h2>
-        <a href="controlador?opc=2">Cursos</a>
-        <br>
-        <a href="controlador?opc=7">Reporte</a>
+                </div>
+            </div>
+            <div class="parallax"><img src="images/background2.jpg"></div>
+        </div>
 
+        <div class="parallax-container valign-wrapper">
+            <div class="parallax"><img src="images/background4.jpg"></div>
+        </div>
 
+        <div class="parallax-container valign-wrapper">
+            <div class="parallax"><img src="images/background5.jpg"></div>
+        </div>
+        
+           
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">
