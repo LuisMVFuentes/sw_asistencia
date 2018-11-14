@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="34b08e73-1e21-498e-aa36-e5a10e8f8d68">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     curso.`idcurso` AS curso_idcurso,
+     curso.`codigo` AS curso_codigo,
+     curso.`nombre` AS curso_nombre,
+     curso.`grupo` AS curso_grupo,
+     curso.`ciclo` AS curso_ciclo,
+     curso.`doc_iddocente` AS curso_doc_iddocente,
+     curso.`car_idcarrera` AS curso_car_idcarrera
+FROM
+     `curso` curso
+WHERE
+     curso.`doc_iddocente`=12345]]>
+	</queryString>
+	<field name="curso_idcurso" class="java.lang.Integer"/>
+	<field name="curso_codigo" class="java.lang.String"/>
+	<field name="curso_nombre" class="java.lang.String"/>
+	<field name="curso_grupo" class="java.lang.String"/>
+	<field name="curso_ciclo" class="java.lang.Integer"/>
+	<field name="curso_doc_iddocente" class="java.lang.Integer"/>
+	<field name="curso_car_idcarrera" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="79" y="15" width="395" height="35" uuid="167eb6ac-4952-49d7-bada-41305672906d"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PRUEBA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="3" width="67" height="20" uuid="28e9e0c1-937f-4550-8fea-6991ce792c62"/>
+				<text><![CDATA[curso_idcurso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="3" width="74" height="20" uuid="72e21ba7-5333-4722-b2be-ca0e6427e1c7"/>
+				<text><![CDATA[curso_codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="3" width="184" height="20" uuid="3088f23e-991a-42aa-95ea-c9e90113a04d"/>
+				<text><![CDATA[curso_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="3" width="79" height="20" uuid="72995b33-69d7-4ed4-bb0c-669efc27f6e4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[curso_grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="3" width="79" height="20" uuid="46fc9bad-9432-4ab0-8c83-05a67c6a7d36"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[curso_ciclo]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="23" width="549" height="1" uuid="1c6d58f8-16d7-4c6e-89a2-cade86f86ae8"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="23" y="0" width="67" height="20" uuid="01c9bcc8-f4fc-44a3-9dc8-5c2af5f6f24e"/>
+				<textFieldExpression><![CDATA[$F{curso_idcurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="0" width="184" height="20" uuid="782a6ce6-d7c8-4b9b-ad56-2ed0b00945da"/>
+				<textFieldExpression><![CDATA[$F{curso_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="0" width="79" height="20" uuid="bc811fee-3f73-4dec-a0ac-96b746bfabc2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{curso_grupo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="79" height="20" uuid="1aa47818-64d4-4446-916b-35db92d6d5a0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{curso_ciclo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="20" width="549" height="1" uuid="29542844-4953-473d-8339-5499007c61d7"/>
+			</line>
+			<textField>
+				<reportElement x="90" y="0" width="74" height="20" uuid="fa7b15f4-3a32-476a-b1fc-14bb83560561"/>
+				<textFieldExpression><![CDATA[$F{curso_codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="4" y="0" width="100" height="20" uuid="d2c1f935-48f5-4ddc-80db-780601340f90"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="80" height="20" uuid="d8033870-7a92-4f2e-9af9-f0f4eaedb6a2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="507" y="0" width="40" height="20" uuid="5abf7b08-cc09-4b97-9443-21874c6fcac5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="16" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -5,3 +6,17 @@
         <group/>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/manue/Documents/V-Ciclo/TALLER_PROGRAMACION/2018-ii/sw_asistencia/web/reports/prueba.jrxml</file>
+            <file>file:/C:/Users/manue/Documents/V-Ciclo/TALLER_PROGRAMACION/2018-ii/sw_asistencia/src/java/Servlets/controlador.java</file>
+            <file>file:/C:/Users/manue/Documents/V-Ciclo/TALLER_PROGRAMACION/2018-ii/sw_asistencia/web/generador.jsp</file>
+            <file>file:/C:/Users/manue/Documents/V-Ciclo/TALLER_PROGRAMACION/2018-ii/sw_asistencia/web/reporteDocente.jsp</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> bae60cf847250f8e1f6a537ff43109a9f56a6e42

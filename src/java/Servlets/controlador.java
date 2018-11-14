@@ -3,10 +3,13 @@ package Servlets;
 import Beans.bCarrera;
 import Beans.bCurso;
 import Beans.bDocente;
+import Beans.bEstudiante;
 import Beans.bSesion;
+import Beans.bSesion_Estudiante;
 import Datos.mCarrera;
 import Datos.mCurso;
 import Datos.mDocente;
+import Datos.mEstudiante;
 import Datos.mSesion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -73,7 +76,7 @@ public class controlador extends HttpServlet {
                             List<bSesion> ses = modelSesion.sesiones(idCurso);
                             rd = request.getRequestDispatcher("curso.jsp");
                             session.setAttribute("Sesiones", ses.iterator());
-                            session.setAttribute("CursoSel", cs.get(0));
+                            session.setAttribute("CursoSel",(bCurso) cs.get(0));
                             session.setAttribute("Carrera", cs1.get(0));
                             rd.forward(request, response);
                         } else {
@@ -90,10 +93,45 @@ public class controlador extends HttpServlet {
                             && session.getAttribute("CursoSel") != null
                             && session.getAttribute("Sesiones") != null) {
                         rd = request.getRequestDispatcher("alumnos.jsp");
-                        
+                        bCurso curso = (bCurso) request.getSession().getAttribute("CursoSel");
+                        mEstudiante me = new mEstudiante();
+                        List<bEstudiante> lista = me.listar(curso.getIdcurso());
+                        session.setAttribute("Estudiantes", lista.iterator());
                         rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=1");
+                    }
+                    break;
+                case 3:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        String codigoEstudiante = request.getParameter("codigo");
+                        if (!codigoEstudiante.equals(null)) {
+                            rd = request.getRequestDispatcher("alumno.jsp");
+                            int estudiante_codigo = Integer.parseInt(request.getParameter("codigo"));
+                            mSesion ms = new mSesion();
+                            mEstudiante me = new mEstudiante();
+                            List<bEstudiante> es = me.listarE(request.getParameter("codigo"));
+                            List<bSesion_Estudiante> estados = ms.estados(estudiante_codigo);
+                            session.setAttribute("Estados", estados.iterator());
+                            session.setAttribute("EstudianteSel",(bEstudiante)es.get(0));
+                            rd.forward(request, response);
+                        }else{
+                            response.sendRedirect("controlador?opc=1");
+                        }
+                    }
+                    break;
+                case 7:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        rd = request.getRequestDispatcher("generador.jsp");
+                        rd.forward(request, response);
                     }
                     break;
                 default:

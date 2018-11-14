@@ -1,3 +1,8 @@
+<%-- 
+    Document   : generador
+    Created on : 13/11/2018, 04:09:11 PM
+    Author     : manue
+--%>
 <%@page import="Beans.bDocente"%>
 <%
     bDocente docente = (session.getAttribute("Docente") != null)
@@ -6,7 +11,6 @@
         response.sendRedirect("controlador?opc=0");
     }
 %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,10 +19,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <h2><%=docente.toString()%></h2>
-        <a href="controlador?opc=2">Cursos</a>
-        <br>
-        <a href="controlador?opc=7">Reporte</a>
+        <a href="reporteDocente.jsp">Reporte</a>
     </body>
 </html>
