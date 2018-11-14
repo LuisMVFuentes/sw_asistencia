@@ -43,18 +43,25 @@ public class controlador extends HttpServlet {
                     String user = request.getParameter("txtUser");
                     String pass = request.getParameter("txtPass");
                     List<bDocente> ds = modelDocente.login(user, pass);
+                    bDocente docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    Iterator<bCurso> itCursos = (session.getAttribute("Cursos") != null)
+                            ? (Iterator<bCurso>) session.getAttribute("Cursos") : null;
                     if (ds.size() == 1) {
                         List<bCurso> cs = modelCurso.cursos_docente((ds.get(0)).getIddocente());
                         rd = request.getRequestDispatcher("home.jsp");
                         session.setAttribute("Docente", ds.get(0));
                         session.setAttribute("Cursos", cs.iterator());
                         rd.forward(request, response);
+                    } else if (docente != null && itCursos != null) {
+                        rd = request.getRequestDispatcher("home.jsp");
+                        rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=0");
                     }
                     break;
                 case 2:
-                    bDocente docente = (session.getAttribute("Docente") != null)
+                    docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
                     if (docente.equals(null)) {
                         response.sendRedirect("controlador?opc=0");

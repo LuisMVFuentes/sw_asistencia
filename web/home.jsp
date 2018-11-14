@@ -34,7 +34,7 @@
             <!--Navbar-->
             <nav class="black" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <a id="logo-container" href="#!" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
                     <ul class="left">
                         <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
                         </li>
@@ -64,7 +64,7 @@
 
         <main>
             <div class="container row">
-                <div class="col l4">
+                <div class="col l3">
                     <ul class="collapsible z-depth-3">
                         <li class="collapsible-header"> 
                             <a href="controlador?opc=2" class="teal-text text-lighten-2"><i class="material-icons">folder</i> <b>Cursos</b></a>
@@ -74,7 +74,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col l8">
+                <div class="col l9">
                     <div class="card-panel z-depth-3">
                         <h4 class="center teal-text">Cursos</h4>
                         <%int cont = 0;
