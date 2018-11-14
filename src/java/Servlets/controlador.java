@@ -107,11 +107,11 @@ public class controlador extends HttpServlet {
                 case 3:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         String codigoEstudiante = request.getParameter("codigo");
-                        if (!codigoEstudiante.equals(null)) {
+                        if (codigoEstudiante != null) {
                             rd = request.getRequestDispatcher("alumno.jsp");
                             int estudiante_codigo = Integer.parseInt(request.getParameter("codigo"));
                             mSesion ms = new mSesion();
@@ -129,7 +129,7 @@ public class controlador extends HttpServlet {
                 case 7:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         rd = request.getRequestDispatcher("generador.jsp");
