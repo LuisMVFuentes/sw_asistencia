@@ -44,7 +44,7 @@ public class controlador extends HttpServlet {
                     String pass = request.getParameter("txtPass");
                     List<bDocente> ds = modelDocente.login(user, pass);
                     if (ds.size() == 1) {
-                        List<bCurso> cs = modelCurso.cursos_docente(ds.get(0).getIddocente());
+                        List<bCurso> cs = modelCurso.cursos_docente((ds.get(0)).getIddocente());
                         rd = request.getRequestDispatcher("home.jsp");
                         session.setAttribute("Docente", ds.get(0));
                         session.setAttribute("Cursos", cs.iterator());

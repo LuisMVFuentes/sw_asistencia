@@ -4,9 +4,9 @@
 <%@page import="Beans.bCurso"%>
 
 <%
+    Iterator<bCurso> itCursos = (new ArrayList<bCurso>()).iterator();
     bDocente docente = (session.getAttribute("Docente") != null)
             ? (bDocente) session.getAttribute("Docente") : null;
-    Iterator<bCurso> itCursos = (new ArrayList<bCurso>()).iterator();
     if (docente.equals(null)) {
         response.sendRedirect("controlador?opc=0");
     } else {
@@ -35,7 +35,7 @@
             <div class="nav-wrapper container">
                 <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
                 <ul class="left">
-                    <li href="#" data-target="slide-out" class="sidenav-trigger btn blue-grey white-text"><i class="material-icons">menu</i></a></li>
+                    <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
                     </li>
                 </ul>
             </div>
@@ -61,7 +61,7 @@
 
 
         <div class="container row">
-            <div class="col l5">
+            <div class="col l4">
                 <ul class="collapsible z-depth-3">
                     <li class="collapsible-header"> 
                         <a href="controlador?opc=2" class="teal-text text-lighten-2"><i class="material-icons">folder</i> <b>Cursos</b></a>
@@ -71,30 +71,36 @@
                     </li>
                 </ul>
             </div>
-            <div class="col l7">
+            <div class="col l8">
                 <div class="card-panel z-depth-3">
+                    <h4 class="center teal-text">Cursos</h4>
+                    <%int cont = 0;
+                        for (Iterator it = itCursos; it.hasNext();) {
+                            bCurso curso = (bCurso) it.next();
+                    %>
+                    <div class="card teal">
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4"><%=curso.getNombre()%><i class="material-icons right">more_vert</i></span>
+                            <p><a class="white-text" href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                            <p><b>Nombre: </b><%=curso.getNombre()%></p>
+                            <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
+                        </div>
+                    </div>
+                    <%
+                            cont++;
+                        }
+                        if (cont == 0) {
+                    %>
 
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
-
-        <ul>
-            <%int cont = 0;
-                for (Iterator it = itCursos; it.hasNext();) {
-                    bCurso curso = (bCurso) it.next();
-            %>
-            <li><%=curso.getCodigo() + " - " + curso.getNombre() + " - " + curso.getGrupo()%><a href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></li>
-                <%
-                        cont++;
-                    }
-                    if (cont == 0) {
-                %>
-            <li>No hay Cursos</li>
-                <%
-                    }
-                %>
-
-        </ul>
 
         <!--Footer -->
         <footer class="page-footer black">
