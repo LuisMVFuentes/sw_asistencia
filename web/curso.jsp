@@ -37,6 +37,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <header>
         <!--Navbar-->
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -48,6 +49,8 @@
                 </div>
             </div>
         </nav>
+        </header>
+        <main>
         <h2><%=curso.toString()%></h2>
         <h2><%=carrera.toString()%></h2>
         <%
@@ -65,6 +68,7 @@
         <%
             }
         %>
+        </main>
          <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">

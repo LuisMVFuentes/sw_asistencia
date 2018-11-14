@@ -37,31 +37,35 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <!--Navbar-->
-        <nav class="black" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
-                <div class="row">
-                    <ul class="right hide-on-med-and-down">
-                        <!--items-->
-                    </ul>
+        <header>
+            <!--Navbar-->
+            <nav class="black" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <div class="row">
+                        <ul class="right hide-on-med-and-down">
+                            <!--items-->
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <h3>Alumno:</h3>
-        <h5><%=estudiante.toString()%></h5>
-        <br>
-        <h3>Estados</h3>
-        <ul>
-            <%
-                for (Iterator it = itEstados; it.hasNext();) {
-                    bSesion_Estudiante estado = (bSesion_Estudiante) it.next();
-            %>
-            <li><%=estado.toString()%></li>
+            </nav>
+        </header>
+        <main>
+            <h3>Alumno:</h3>
+            <h5><%=estudiante.toString()%></h5>
+            <br>
+            <h3>Estados</h3>
+            <ul>
                 <%
-                    }
+                    for (Iterator it = itEstados; it.hasNext();) {
+                        bSesion_Estudiante estado = (bSesion_Estudiante) it.next();
                 %>
-        </ul>
+                <li><%=estado.toString()%></li>
+                    <%
+                        }
+                    %>
+            </ul>
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">

@@ -17,66 +17,66 @@ and open the template in the editor.
         <script src="js/script.js"></script>
     </head>
     <body>
-
-        <div id="modal1" class="modal">
-            <form action="controlador" onsubmit="return validar()" method="post">
-                <div class="modal-content">
-                    <h4>Inicie Sesión</h4>
-                    <p class="input-field">
-                        <input type="text" name="txtUser" id="txtUser">
-                        <label for="txtUser">Usuario</label>
-                    </p>
-                    <p class="input-field">
-                        <input type="password" name="txtPass" id="txtPass">
-                        <label for="txtPass">Contraseña</label>
-                    </p>
-                    <input type="hidden" value="1" name="opc">
-                </div>
-                <div class="modal-footer">
-                    <input class="waves-effect waves-green btn-flat" type="submit" value="Ingresar">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                </div>
-            </form>
-        </div>
-
-        <nav class="black" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
-                <div class="row">
-                    <ul class="right hide-on-med-and-down">
-                        <li><a class="teal-text text-lighten-2 modal-trigger" href="#modal1">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-
-        <div id="index-banner" class="parallax-container">
-            <div class="section no-pad-bot">
-                <div class="container">
-                    <br><br>
-                    <h1 class="header center teal-text text-lighten-2">SW Asistencia</h1>
-                    <div class="row center">
-                        <h5 class="header col s12 light">[texto]</h5>
+        <header>
+            <div id="modal1" class="modal">
+                <form action="controlador" onsubmit="return validar()" method="post">
+                    <div class="modal-content">
+                        <h4>Inicie Sesión</h4>
+                        <p class="input-field">
+                            <input type="text" name="txtUser" id="txtUser">
+                            <label for="txtUser">Usuario</label>
+                        </p>
+                        <p class="input-field">
+                            <input type="password" name="txtPass" id="txtPass">
+                            <label for="txtPass">Contraseña</label>
+                        </p>
+                        <input type="hidden" value="1" name="opc">
                     </div>
-                    <!--<div class="row center">
-                        <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-                    </div>-->
-                    <br><br>
-
-                </div>
+                    <div class="modal-footer">
+                        <input class="waves-effect waves-green btn-flat" type="submit" value="Ingresar">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    </div>
+                </form>
             </div>
-            <div class="parallax"><img src="images/background2.jpg"></div>
-        </div>
 
-        <div class="parallax-container valign-wrapper">
-            <div class="parallax"><img src="images/background4.jpg"></div>
-        </div>
+            <nav class="black" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <div class="row">
+                        <ul class="right hide-on-med-and-down">
+                            <li><a class="teal-text text-lighten-2 modal-trigger" href="#modal1">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div id="index-banner" class="parallax-container">
+                <div class="section no-pad-bot">
+                    <div class="container">
+                        <br><br>
+                        <h1 class="header center teal-text text-lighten-2">SW Asistencia</h1>
+                        <div class="row center">
+                            <h5 class="header col s12 light">[texto]</h5>
+                        </div>
+                        <!--<div class="row center">
+                            <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+                        </div>-->
+                        <br><br>
 
-        <div class="parallax-container valign-wrapper">
-            <div class="parallax"><img src="images/background5.jpg"></div>
-        </div>
-        
+                    </div>
+                </div>
+                <div class="parallax"><img src="images/background2.jpg"></div>
+            </div>
+
+            <div class="parallax-container valign-wrapper">
+                <div class="parallax"><img src="images/background4.jpg"></div>
+            </div>
+
+            <div class="parallax-container valign-wrapper">
+                <div class="parallax"><img src="images/background5.jpg"></div>
+            </div>
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">

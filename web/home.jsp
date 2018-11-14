@@ -30,77 +30,82 @@
         <script src="js/script.js"></script>
     </head>
     <body>
-        <!--Navbar-->
-        <nav class="black" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
-                <ul class="left">
-                    <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <ul id="slide-out" class="sidenav">
-            <li><div class="user-view">
-                    <div class="background">
-                        <img src="images/background1.jpg">
-                    </div>
-                    <a href="#user"><img width="100px" height="100px" src="images/savings.png"></a>
-                    <a href="#name"><span class="white-text name">
-                            <%=docente.getNombre_doc()%>
-                        </span></a>
-                    <a href="#name"><span class="white-text name">
-                            <%=docente.getCodigo()%></span></a>
-                    <a href="#email"><span class="white-text email"><%=docente.getCorreo()%></span></a>
-                </div></li>
-            <li><a href="controlador?opc=31"><i class="material-icons">settings</i>Configuración</a></li>
-            <li><div class="divider"></div></li>
-            <li><a class="subheader">Sesion</a></li>
-            <li><a class="waves-effect" href="controlador?opc=22">Cerrar Sesion</a></li>
-        </ul>
+        <header>
+            <!--Navbar-->
+            <nav class="black" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <ul class="left">
+                        <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-
-        <div class="container row">
-            <div class="col l4">
-                <ul class="collapsible z-depth-3">
-                    <li class="collapsible-header"> 
-                        <a href="controlador?opc=2" class="teal-text text-lighten-2"><i class="material-icons">folder</i> <b>Cursos</b></a>
-                    </li>
-                    <li class="collapsible-header">
-                        <a href="controlador?opc=7" class="teal-text text-lighten-2"><i class="material-icons">folder</i> <b>Reporte</b></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col l8">
-                <div class="card-panel z-depth-3">
-                    <h4 class="center teal-text">Cursos</h4>
-                    <%int cont = 0;
-                        for (Iterator it = itCursos; it.hasNext();) {
-                            bCurso curso = (bCurso) it.next();
-                    %>
-                    <div class="card teal">
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4"><%=curso.getNombre()%><i class="material-icons right">more_vert</i></span>
-                            <p><a class="white-text" href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></p>
+            <ul id="slide-out" class="sidenav">
+                <li><div class="user-view">
+                        <div class="background">
+                            <img src="images/background1.jpg">
                         </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                            <p><b>Nombre: </b><%=curso.getNombre()%></p>
-                            <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
-                        </div>
-                    </div>
-                    <%
-                            cont++;
-                        }
-                        if (cont == 0) {
-                    %>
+                        <a href="#user"><img width="100px" height="100px" src="images/savings.png"></a>
+                        <a href="#name"><span class="white-text name">
+                                <%=docente.getNombre_doc()%>
+                            </span></a>
+                        <a href="#name"><span class="white-text name">
+                                <%=docente.getCodigo()%></span></a>
+                        <a href="#email"><span class="white-text email"><%=docente.getCorreo()%></span></a>
+                    </div></li>
+                <li><a href="controlador?opc=31"><i class="material-icons">settings</i>Configuración</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="subheader">Sesion</a></li>
+                <li><a class="waves-effect" href="controlador?opc=22">Cerrar Sesion</a></li>
+            </ul>
+        </header>
 
-                    <%
-                        }
-                    %>
+        <main>
+            <div class="container row">
+                <div class="col l4">
+                    <ul class="collapsible z-depth-3">
+                        <li class="collapsible-header"> 
+                            <a href="controlador?opc=2" class="teal-text text-lighten-2"><i class="material-icons">folder</i> <b>Cursos</b></a>
+                        </li>
+                        <li class="collapsible-header">
+                            <a href="controlador?opc=7" class="teal-text text-lighten-2"><i class="material-icons">folder</i> <b>Reporte</b></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l8">
+                    <div class="card-panel z-depth-3">
+                        <h4 class="center teal-text">Cursos</h4>
+                        <%int cont = 0;
+                            for (Iterator it = itCursos; it.hasNext();) {
+                                bCurso curso = (bCurso) it.next();
+                        %>
+                        <div class="card teal">
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><%=curso.getNombre()%><i class="material-icons right">more_vert</i></span>
+                                <p><a class="white-text" href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                                <p><b>Nombre: </b><%=curso.getNombre()%></p>
+                                <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
+                            </div>
+                        </div>
+                        <%
+                                cont++;
+                            }
+                            if (cont == 0) {
+                        %>
+
+                        <%
+                            }
+                        %>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
+
 
         <!--Footer -->
         <footer class="page-footer black">
