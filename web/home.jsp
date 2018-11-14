@@ -18,5 +18,7 @@
         <h1>Hello World!</h1>
         <h2><%=docente.toString()%></h2>
         <a href="controlador?opc=2">Cursos</a>
+        <br>
+        <a href="controlador?opc=7">Reporte</a>
     </body>
 </html>
