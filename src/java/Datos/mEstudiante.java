@@ -15,6 +15,11 @@ public class mEstudiante {
         return cado.Ejecutar(sql, e.getParametros());
     }
     
+    public List listarE(String codigo){
+        String sql = "SELECT * FROM estudiante WHERE codigo="+codigo;
+        ResultSet rs = cado.Recuperar(sql);
+        return list(rs);
+    }
     public List listar(int curso_idcurso){
         String sql = "SELECT * FROM estudiante WHERE curso_idcurso="+curso_idcurso;
         ResultSet rs = cado.Recuperar(sql);

@@ -5,6 +5,7 @@ import Beans.bCurso;
 import Beans.bDocente;
 import Beans.bEstudiante;
 import Beans.bSesion;
+import Beans.bSesion_Estudiante;
 import Datos.mCarrera;
 import Datos.mCurso;
 import Datos.mDocente;
@@ -99,6 +100,28 @@ public class controlador extends HttpServlet {
                         rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=1");
+                    }
+                    break;
+                case 3:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        String codigoEstudiante = request.getParameter("codigo");
+                        if (!codigoEstudiante.equals(null)) {
+                            rd = request.getRequestDispatcher("alumno.jsp");
+                            int estudiante_codigo = Integer.parseInt(request.getParameter("codigo"));
+                            mSesion ms = new mSesion();
+                            mEstudiante me = new mEstudiante();
+                            List<bEstudiante> es = me.listarE(request.getParameter("codigo"));
+                            List<bSesion_Estudiante> estados = ms.estados(estudiante_codigo);
+                            session.setAttribute("Estados", estados.iterator());
+                            session.setAttribute("EstudianteSel",(bEstudiante)es.get(0));
+                            rd.forward(request, response);
+                        }else{
+                            response.sendRedirect("controlador?opc=1");
+                        }
                     }
                     break;
                 case 7:

@@ -29,7 +29,8 @@
                 for (Iterator it = itEstudiantes; it.hasNext();) {
                         bEstudiante estudiante = (bEstudiante)it.next();
                         %>
-                        <li><%=estudiante.getCodigo()+" - "+estudiante.getNombre()+" - "+estudiante.getCorreo()+" - "+ estudiante.getCelular()%><a href="alumno.jsp">Ver más</a></li>
+                        <li><%=estudiante.getCodigo()+" - "+estudiante.getNombre()+" - "+estudiante.getCorreo()+" - "+ estudiante.getCelular()%>
+                            <a href="controlador?opc=3&codigo=<%=estudiante.getCodigo()%>">Ver más</a></li>
             <% 
                     }
             %>
