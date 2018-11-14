@@ -4,6 +4,7 @@ import Beans.bSesion;
 import Beans.bSesion_Estudiante;
 import Utiles.Fecha;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class mSesion {
                 bSesion s = new bSesion(rs);
                 ses.add(s);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             ses = new ArrayList<>();
         }
         return ses;
