@@ -29,31 +29,35 @@
         <title>Alumnos</title>
     </head>
     <body>
-        <!--Navbar-->
-        <nav class="black" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
-                <div class="row">
-                    <ul class="right hide-on-med-and-down">
-                        <!--items-->
-                    </ul>
+        <header>
+            <!--Navbar-->
+            <nav class="black" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <div class="row">
+                        <ul class="right hide-on-med-and-down">
+                            <!--items-->
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <h2>Lista de Estudiantes en el Curso: </h2>
-        <ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Lista de Estudiantes en el Curso: </h2>
+            <ul>
 
-            <%
-                for (Iterator it = itEstudiantes; it.hasNext();) {
-                    bEstudiante estudiante = (bEstudiante) it.next();
-            %>
-            <li><%=estudiante.getCodigo() + " - " + estudiante.getNombre() + " - " + estudiante.getCorreo() + " - " + estudiante.getCelular()%>
-                <a href="controlador?opc=3&codigo=<%=estudiante.getCodigo()%>">Ver más</a></li>
                 <%
-                    }
+                    for (Iterator it = itEstudiantes; it.hasNext();) {
+                        bEstudiante estudiante = (bEstudiante) it.next();
                 %>
+                <li><%=estudiante.getCodigo() + " - " + estudiante.getNombre() + " - " + estudiante.getCorreo() + " - " + estudiante.getCelular()%>
+                    <a href="controlador?opc=3&codigo=<%=estudiante.getCodigo()%>">Ver más</a></li>
+                    <%
+                        }
+                    %>
 
-        </ul>
+            </ul>
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">

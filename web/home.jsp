@@ -30,6 +30,7 @@
         <script src="js/script.js"></script>
     </head>
     <body>
+        <header>
         <!--Navbar-->
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -40,6 +41,8 @@
                 </ul>
             </div>
         </nav>
+        </header>
+        <main>
         <ul id="slide-out" class="sidenav">
             <li><div class="user-view">
                     <div class="background">
@@ -95,7 +98,7 @@
                 %>
 
         </ul>
-
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">

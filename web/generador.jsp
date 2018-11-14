@@ -26,6 +26,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <header>
         <!--Navbar-->
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -37,8 +38,10 @@
                 </div>
             </div>
         </nav>
-
+        </header>
+        <main>
         <a href="reporteDocente.jsp">Reporte</a>
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">

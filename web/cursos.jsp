@@ -29,34 +29,38 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <!--Navbar-->
-        <nav class="black" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
-                <div class="row">
-                    <ul class="right hide-on-med-and-down">
-                        <!--items-->
-                    </ul>
+        <header>
+            <!--Navbar-->
+            <nav class="black" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <div class="row">
+                        <ul class="right hide-on-med-and-down">
+                            <!--items-->
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <ul>
-            <%int cont = 0;
-                for (Iterator it = itCursos; it.hasNext();) {
-                    bCurso curso = (bCurso) it.next();
-            %>
-            <li><%=curso.getCodigo() + " - " + curso.getNombre() + " - " + curso.getGrupo()%><a href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></li>
-                <%
-                        cont++;
-                    }
-                    if (cont == 0) {
+            </nav>
+        </header>
+        <main>
+            <ul>
+                <%int cont = 0;
+                    for (Iterator it = itCursos; it.hasNext();) {
+                        bCurso curso = (bCurso) it.next();
                 %>
-            <li>No hay Cursos</li>
-                <%
-                    }
-                %>
+                <li><%=curso.getCodigo() + " - " + curso.getNombre() + " - " + curso.getGrupo()%><a href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></li>
+                    <%
+                            cont++;
+                        }
+                        if (cont == 0) {
+                    %>
+                <li>No hay Cursos</li>
+                    <%
+                        }
+                    %>
 
-        </ul>
+            </ul>
+        </main>
         <!--Footer -->
         <footer class="page-footer black">
             <div class="footer-copyright white-text">
