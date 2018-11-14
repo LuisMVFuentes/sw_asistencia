@@ -96,6 +96,16 @@ public class controlador extends HttpServlet {
                         response.sendRedirect("controlador?opc=1");
                     }
                     break;
+                case 7:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        rd = request.getRequestDispatcher("generador.jsp");
+                        rd.forward(request, response);
+                    }
+                    break;
                 default:
                     out.print("<h1>[Default] Controlador</h1>\n"
                             + "<h2>../controlador?opc=" + opc + "</h2>"
