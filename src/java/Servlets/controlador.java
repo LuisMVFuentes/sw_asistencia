@@ -133,6 +133,35 @@ public class controlador extends HttpServlet {
                         }
                     }
                     break;
+                case 31:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        response.sendRedirect("config.jsp");
+                    }
+                    break;
+                case 4:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente.equals(null)) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        int id = Integer.parseInt(request.getParameter("txtIdDocente"));
+                        String nombre = request.getParameter("txtNombre");
+                        String codigo = request.getParameter("txtCodigo");
+                        String correo = request.getParameter("txtCorreo");
+                        String password = request.getParameter("txtPassword");
+                        Object[] p = {id,codigo,nombre,correo,password,id};
+                        mDocente md = new mDocente();
+                        if (md.modificar(p)) {
+                            response.sendRedirect("controlador?opc=2");
+                        }else{
+                            response.sendRedirect("controlador?opc=999");
+                        }
+                    }
+                    break;
                 case 7:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
@@ -142,6 +171,9 @@ public class controlador extends HttpServlet {
                         rd = request.getRequestDispatcher("generador.jsp");
                         rd.forward(request, response);
                     }
+                    break;
+                case 99:
+                    response.sendRedirect("home.jsp");
                     break;
                 default:
                     out.print("<h1>[Default] Controlador</h1>\n"
