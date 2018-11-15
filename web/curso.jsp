@@ -9,8 +9,8 @@
     bCurso curso = new bCurso();
     Iterator<bSesion> itSesiones = (new ArrayList<bSesion>()).iterator();
     bDocente docente = (session.getAttribute("Docente") != null)
-            ? (bDocente) session.getAttribute("Docente") : null;
-    if (docente.equals(null)) {
+            ? (bDocente) session.getAttribute("Docente") : new bDocente();
+    if (session.getAttribute("Docente") == null) {
         response.sendRedirect("controlador?opc=0");
     } else {
         curso = (session.getAttribute("CursoSel") != null)
@@ -105,7 +105,7 @@
                                 <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
                             </div>
                         </div>
-                        
+
                         <%=sesion.toString()%><a href="controlador?opc=211">Ver Alumnos</a>
                         <%
                                 cont++;

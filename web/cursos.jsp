@@ -5,8 +5,8 @@
 <%
     Iterator<bCurso> itCursos = (new ArrayList<bCurso>()).iterator();
     bDocente docente = (session.getAttribute("Docente") != null)
-            ? (bDocente) session.getAttribute("Docente") : null;
-    if (docente.equals(null)) {
+            ? (bDocente) session.getAttribute("Docente") : new bDocente();
+    if (session.getAttribute("Docente") == null) {
         response.sendRedirect("controlador?opc=0");
     } else {
         itCursos = (session.getAttribute("Cursos") != null)

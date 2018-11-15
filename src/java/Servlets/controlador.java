@@ -63,7 +63,7 @@ public class controlador extends HttpServlet {
                 case 2:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         List<bCurso> cs = modelCurso.cursos_docente(docente.getIddocente());
@@ -75,7 +75,7 @@ public class controlador extends HttpServlet {
                 case 21:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         int idCurso = Integer.parseInt(request.getParameter("idCurso"));
@@ -96,7 +96,7 @@ public class controlador extends HttpServlet {
                 case 211:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else if (session.getAttribute("Carrera") != null
                             && session.getAttribute("CursoSel") != null
@@ -112,10 +112,9 @@ public class controlador extends HttpServlet {
                     }
                     break;
                 case 22:
-                    rd = request.getRequestDispatcher("home.jsp");
                     session.removeAttribute("Docente");
                     session.invalidate();
-                    rd.forward(request, response);
+                    response.sendRedirect("index.html");
                     break;
                 case 3:
                     docente = (session.getAttribute("Docente") != null)
@@ -142,7 +141,7 @@ public class controlador extends HttpServlet {
                 case 31:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         response.sendRedirect("config.jsp");
@@ -151,7 +150,7 @@ public class controlador extends HttpServlet {
                 case 4:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
-                    if (docente.equals(null)) {
+                    if (docente == null) {
                         response.sendRedirect("controlador?opc=0");
                     } else {
                         int id = Integer.parseInt(request.getParameter("txtIdDocente"));

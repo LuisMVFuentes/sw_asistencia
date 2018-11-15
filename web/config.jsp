@@ -9,7 +9,7 @@
 <%
     bDocente docente = (session.getAttribute("Docente") != null)
             ? (bDocente) session.getAttribute("Docente") : null;
-    if (docente.equals(null)) {
+    if (session.getAttribute("Docente") == null) {
         response.sendRedirect("controlador?opc=0");
     } else {
         
