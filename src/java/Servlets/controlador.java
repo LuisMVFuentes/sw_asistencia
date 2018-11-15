@@ -53,9 +53,6 @@ public class controlador extends HttpServlet {
                         session.setAttribute("Docente", ds.get(0));
                         session.setAttribute("Cursos", cs.iterator());
                         rd.forward(request, response);
-                    } else if (docente != null && itCursos != null) {
-                        rd = request.getRequestDispatcher("home.jsp");
-                        rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=0");
                     }
@@ -178,7 +175,14 @@ public class controlador extends HttpServlet {
                     }
                     break;
                 case 99:
-                    response.sendRedirect("home.jsp");
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente == null) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        response.sendRedirect("controlador?opc=1&txtPass="
+                                + docente.getPassword() + "&txtUser=" + docente.getCorreo());
+                    }
                     break;
                 default:
                     out.print("<h1>[Default] Controlador</h1>\n"
