@@ -158,8 +158,7 @@ public class controlador extends HttpServlet {
                         String correo = request.getParameter("txtCorreo");
                         String password = request.getParameter("txtPassword");
                         Object[] p = {id, codigo, nombre, correo, password, id};
-                        mDocente md = new mDocente();
-                        if (md.modificar(p)) {
+                        if (modelDocente.modificar(p)) {
                             response.sendRedirect("controlador?opc=2");
                         } else {
                             response.sendRedirect("controlador?opc=999");
@@ -188,16 +187,16 @@ public class controlador extends HttpServlet {
                         int carrera = Integer.parseInt(request.getParameter("txtCarrera"));
                         bCurso curso = new bCurso(
                                 r.getInt(),
-                                request.getParameter("txtCodigo"), 
-                                request.getParameter("txtNombre"), 
-                                request.getParameter("txtGrupo"), 
-                                ciclo, 
-                                docente.getIddocente(), 
+                                request.getParameter("txtCodigo"),
+                                request.getParameter("txtNombre"),
+                                request.getParameter("txtGrupo"),
+                                ciclo,
+                                docente.getIddocente(),
                                 carrera);
                         if (modelCurso.insertar(curso)) {
                             response.sendRedirect("controlador?opc=2");
-                        }else{
-                        response.sendRedirect("addCurso.jsp");
+                        } else {
+                            response.sendRedirect("addCurso.jsp");
                         }
                     }
                     break;

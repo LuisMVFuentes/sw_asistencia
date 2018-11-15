@@ -96,23 +96,21 @@
                         %>
                         <div class="card teal">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4"><%=curso.getNombre()%><i class="material-icons right">more_vert</i></span>
-                                <p><a class="white-text" href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                                <p><b>Nombre: </b><%=curso.getNombre()%></p>
-                                <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
+                                <span class="card-title activator grey-text text-darken-4"><b>Sesion N° <%=sesion.getIdsesiones()%>: </b><%=sesion.getFecha()%><i class="material-icons right">more_vert</i></span>
+                                <p><a class="white-text" href="controlador?opc=211">Ver Alumnos</a></p>
                             </div>
                         </div>
-
-                        <%=sesion.toString()%><a href="controlador?opc=211">Ver Alumnos</a>
                         <%
                                 cont++;
                             }
                             if (cont == 0) {
                         %>
-                        No hay sesiones.
+                        <div class="card white">
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">No hay sesiones.<i class="material-icons right">more_vert</i></span>
+                                <p><a class="white-text" href="controlador?opc=211">Ver Alumnos</a></p>
+                            </div>
+                        </div>
                         <%
                             }
                         %>

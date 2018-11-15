@@ -16,3 +16,11 @@ function validar() {
 }
 ;
 
+function validarEditar() {
+    var nombre = document.getElementById("txtNombre");
+    var codigo = document.getElementById("txtCodigo");
+    var email = document.getElementById("txtCorreo");
+    var pass = document.getElementById("txtPass");
+    
+}
+

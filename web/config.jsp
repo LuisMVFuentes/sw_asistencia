@@ -12,7 +12,7 @@
     if (session.getAttribute("Docente") == null) {
         response.sendRedirect("controlador?opc=0");
     } else {
-        
+
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -67,28 +67,28 @@
                     <h3 class="center-align">Configuracion</h3>
                 </div>
                 <div class="divider"></div>
-                <form action="controlador">
+                <form action="controlador" method="post" onsubmit="return validarEditar()">
                     <div class="container section">
                         <table class="striped responsive-table">
                             <tr>
                                 <th>Nombre</th>
-                                <td><input readonly="" type="text" name="txtNombre" value="<%=docente.getNombre_doc()%>"></td>
+                                <td><input readonly="" type="text" id="txtNombre" name="txtNombre" value="<%=docente.getNombre_doc()%>"></td>
                             </tr>
                             <tr>
                                 <th>Id</th>
-                                <td><input readonly="" type="text" name="txtIdDocente" value="<%=docente.getIddocente()%>"></td>
+                                <td><input readonly="" type="text" id="txtIdDocente" name="txtIdDocente" value="<%=docente.getIddocente()%>"></td>
                             </tr>
                             <tr>
                                 <th>Codigo</th>
-                                <td><input type="text" name="txtCodigo" value="<%=docente.getCodigo()%>"></td>
+                                <td><input type="text" id="txtCodigo" name="txtCodigo" value="<%=docente.getCodigo()%>"></td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td><input type="email" name="txtCorreo" value="<%=docente.getCorreo()%>"</td>
+                                <td><input type="email" id="txtCorreo" name="txtCorreo" value="<%=docente.getCorreo()%>"</td>
                             </tr>
                             <tr>
                                 <th>Password</th>
-                                <td><input type="password" id="input_text" name="txtPassword" value="<%=docente.getPassword()%>" data-length="8"</td>
+                                <td><input type="password" id="txtPass" name="txtPassword" value="<%=docente.getPassword()%>" data-length="8"</td>
                             </tr>
                         </table>
                     </div>
