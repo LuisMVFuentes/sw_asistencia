@@ -1,3 +1,4 @@
+<%@page import="Utiles.Fecha"%>
 <%@page import="Beans.bSesion"%>
 <%@page import="Beans.bCarrera"%>
 <%@page import="java.util.Iterator"%>
@@ -96,7 +97,9 @@
                         %>
                         <div class="card teal">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4"><b>Sesion N° <%=sesion.getIdsesiones()%>: </b><%=sesion.getFecha()%><i class="material-icons right">more_vert</i></span>
+                                <span class="card-title activator grey-text text-darken-4"><b>Sesion N° <%=sesion.getIdsesiones()%>: </b><%=sesion.getFecha()%>
+                                    <%if (sesion.getFecha().equals(new Fecha().getFecha("-"))) {%><i class="material-icons left">fiber_new</i><%}%>
+                                    <i class="material-icons right">more_vert</i></span>
                                 <p><a class="white-text" href="controlador?opc=211">Ver Alumnos</a></p>
                             </div>
                         </div>
