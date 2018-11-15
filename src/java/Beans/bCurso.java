@@ -19,6 +19,16 @@ public class bCurso {
     public bCurso() {
     }
 
+    public bCurso(Object[] parametros) {
+        parametros[0] = this.idcurso;
+        parametros[1] = this.codigo;
+        parametros[2] = this.nombre;
+        parametros[3] = this.grupo;
+        parametros[4] = this.ciclo;
+        parametros[5] = this.doc_iddocente;
+        parametros[6] = this.car_idcarrera;
+    }
+
     public bCurso(int idcurso, String codigo, String nombre, String grupo, int ciclo, int doc_iddocente, int car_idcarrera) {
         this.idcurso = idcurso;
         this.codigo = codigo;
@@ -97,7 +107,7 @@ public class bCurso {
     public void setCar_idcarrera(int car_idcarrera) {
         this.car_idcarrera = car_idcarrera;
     }
-
+    
     public Object[] getParametros() {
         Object[] os = new Object[7];
         os[0] = this.idcurso;

@@ -43,10 +43,10 @@ public class mDocente {
         return ds;
     }
     
-    public static void main(String[] args) {
-        mDocente md = new mDocente();
-        Object[] parametros = {12345,"152083G","Juanita Paredez Dominguez","jpd@gmail.com","jpd12345",12345};
-        System.out.println(md.modificar(parametros));;
-    }
+//    public static void main(String[] args) {
+//        mDocente md = new mDocente();
+//        Object[] parametros = {12345,"152083G","Juanita Paredez Dominguez","jpd@gmail.com","jpd12345",12345};
+//        System.out.println(md.modificar(parametros));;
+//    }
 
 }
