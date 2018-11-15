@@ -40,7 +40,7 @@
             <!--Navbar-->
             <nav class="black" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="#!" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <a id="logo-container" href="controlador?opc=2" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
                     <ul class="left">
                         <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
                         </li>
@@ -69,7 +69,7 @@
         </header>
         <main>
             <div class="container z-depth-3">
-                <div class="container row">
+                <div class="container row" id="addCurso">
                     <h3 class="center teal-text">Nuevo Curso</h3>
                 </div>
                 <div class="divider"></div>
