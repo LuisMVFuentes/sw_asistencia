@@ -76,6 +76,9 @@
                 <div class="col l9">
                     <div class="card-panel z-depth-3">
                         <h4 class="center teal-text">Cursos</h4>
+                        <div class="section left-align">
+                            <a href="controlador?opc=5" class="modal-close waves-effect waves-green btn-flat">Agregar<i class="material-icons right">add</i></a>
+                        </div>
                         <%int cont = 0;
                             for (Iterator it = itCursos; it.hasNext();) {
                                 bCurso curso = (bCurso) it.next();

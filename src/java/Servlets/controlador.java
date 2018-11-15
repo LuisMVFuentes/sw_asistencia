@@ -11,6 +11,7 @@ import Datos.mCurso;
 import Datos.mDocente;
 import Datos.mEstudiante;
 import Datos.mSesion;
+import Utiles.random;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
@@ -35,6 +36,7 @@ public class controlador extends HttpServlet {
             mCurso modelCurso = new mCurso();
             mCarrera modelCarrera = new mCarrera();
             mSesion modelSesion = new mSesion();
+            random r = new random();
             switch (opc) {
                 case 0:
                     response.sendRedirect("index.html");
@@ -161,6 +163,41 @@ public class controlador extends HttpServlet {
                             response.sendRedirect("controlador?opc=2");
                         } else {
                             response.sendRedirect("controlador?opc=999");
+                        }
+                    }
+                    break;
+                case 5:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente == null) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        rd = request.getRequestDispatcher("addCurso.jsp");
+                        List<bCarrera> carreras = modelCarrera.listar();
+                        session.setAttribute("Carreras", carreras.iterator());
+                        rd.forward(request, response);
+                    }
+                    break;
+                case 51:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente == null) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        int ciclo = Integer.parseInt(request.getParameter("txtCiclo"));
+                        int carrera = Integer.parseInt(request.getParameter("txtCarrera"));
+                        bCurso curso = new bCurso(
+                                r.getInt(),
+                                request.getParameter("txtCodigo"), 
+                                request.getParameter("txtNombre"), 
+                                request.getParameter("txtGrupo"), 
+                                ciclo, 
+                                docente.getIddocente(), 
+                                carrera);
+                        if (modelCurso.insertar(curso)) {
+                            response.sendRedirect("controlador?opc=2");
+                        }else{
+                        response.sendRedirect("addCurso.jsp");
                         }
                     }
                     break;

@@ -52,7 +52,9 @@ p {
         top: 0;
     }
 }
-
+#addCurso{
+    padding-top: 10px;
+}
 .icon-block {
     padding: 0 15px;
 }

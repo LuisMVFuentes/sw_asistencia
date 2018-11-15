@@ -23,7 +23,12 @@ public class mCarrera {
         ResultSet rs = cado.Recuperar(sql);
         return list(rs);
     }
-
+    
+    public List<bCarrera> listar(){
+        String sql = "SELECT * FROM carrera";
+        ResultSet rs = cado.Recuperar(sql);
+        return list(rs);
+    }
     private List<bCarrera> list(ResultSet rs) {
         List<bCarrera> cs = new ArrayList<>();
         try {
