@@ -68,7 +68,7 @@
                 </div>
                 <div class="divider"></div>
                 <form action="controlador">
-                    <div class="section">
+                    <div class="container section">
                         <table class="striped responsive-table">
                             <tr>
                                 <th>Nombre</th>

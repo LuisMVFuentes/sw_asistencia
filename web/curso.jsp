@@ -105,7 +105,7 @@
                                 <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
                             </div>
                         </div>
-
+                        
                         <%=sesion.toString()%><a href="controlador?opc=211">Ver Alumnos</a>
                         <%
                                 cont++;
