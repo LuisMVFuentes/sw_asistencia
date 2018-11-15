@@ -33,7 +33,7 @@
             <!--Navbar-->
             <nav class="black" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="controlador?opc=0" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    <a id="logo-container" href="#!" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
                     <div class="row">
                         <ul class="right hide-on-med-and-down">
                             <!--items-->
