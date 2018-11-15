@@ -111,6 +111,12 @@ public class controlador extends HttpServlet {
                         response.sendRedirect("controlador?opc=1");
                     }
                     break;
+                case 22:
+                    rd = request.getRequestDispatcher("home.jsp");
+                    session.removeAttribute("Docente");
+                    session.invalidate();
+                    rd.forward(request, response);
+                    break;
                 case 3:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
@@ -153,11 +159,11 @@ public class controlador extends HttpServlet {
                         String codigo = request.getParameter("txtCodigo");
                         String correo = request.getParameter("txtCorreo");
                         String password = request.getParameter("txtPassword");
-                        Object[] p = {id,codigo,nombre,correo,password,id};
+                        Object[] p = {id, codigo, nombre, correo, password, id};
                         mDocente md = new mDocente();
                         if (md.modificar(p)) {
                             response.sendRedirect("controlador?opc=2");
-                        }else{
+                        } else {
                             response.sendRedirect("controlador?opc=999");
                         }
                     }
