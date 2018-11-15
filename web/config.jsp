@@ -90,6 +90,10 @@
                                 <th>Password</th>
                                 <td><input type="password" id="txtPass" name="txtPassword" value="<%=docente.getPassword()%>" data-length="8"</td>
                             </tr>
+                            <tr>
+                                <th>Repetir Password</th>
+                                <td><input type="password" id="txtPass1" name="txtPassword1" value="<%=docente.getPassword()%>" data-length="8"</td>
+                            </tr>
                         </table>
                     </div>
                     <div class="divider"></div>
