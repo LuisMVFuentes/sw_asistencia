@@ -30,4 +30,3 @@ function validarEditar() {
         return confirm("¿Desea Guardar?");
     }
 }
-

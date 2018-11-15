@@ -210,6 +210,15 @@ public class controlador extends HttpServlet {
                         rd.forward(request, response);
                     }
                     break;
+                case 8:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente == null) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        response.sendRedirect("reporteDocente.jsp");
+                    }
+                    break;
                 case 99:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;

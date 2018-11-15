@@ -78,7 +78,8 @@
                     <div class="card-panel z-depth-3">
                         <h4 class="center teal-text">Cursos</h4>
                         <div class="section left-align">
-                            <a href="controlador?opc=5" class="modal-close waves-effect waves-green btn-flat">Agregar<i class="material-icons right">add</i></a>
+                            <a href="controlador?opc=5" class="waves-effect waves-green btn-flat"><i class="material-icons left">add</i>Agregar</a>
+                            <a href="controlador?opc=8" class="waves-effect waves-green btn-flat" target="_blank"><i class="material-icons left">insert_drive_file</i>Reporte</a>
                         </div>
                         <%int cont = 0;
                             for (Iterator it = itCursos; it.hasNext();) {
