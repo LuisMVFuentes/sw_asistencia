@@ -34,11 +34,12 @@
             <!--Navbar-->
             <nav class="black" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="#!" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
+                    
                     <ul class="left">
                         <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
                         </li>
                     </ul>
+                    <a id="logo-container" href="#!" class="brand-logo teal-text text-lighten-2">SW Asistencia</a>
                 </div>
             </nav>
 
