@@ -21,8 +21,9 @@
     <body>
         <%
             CADO cado = new CADO();
-            File archivo = new File("C:\\Users\\MARIANO\\Desktop\\NetBeans Project\\sw_asistencia\\web\\reports\\prueba.jasper");
-            Map<String, Object> param = new HashMap<>();
+            String ruta = System.getProperty("catalina.home") + "\\webapps\\sw_asistencia\\reports\\prueba.jasper";
+            File archivo = new File(ruta);
+            Map<String, Object> param = new HashMap<String, Object>();
             byte[] bytes = JasperRunManager.runReportToPdf(archivo.getPath(), param, cado.conectar());
             response.setContentType("application/pdf");
             response.setContentLength(bytes.length);
