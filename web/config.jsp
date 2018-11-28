@@ -71,10 +71,6 @@
                     <div class="container section">
                         <table class="striped responsive-table">
                             <tr>
-                                <th>Nombre</th>
-                                <td><input readonly="" type="text" id="txtNombre" name="txtNombre" value="<%=docente.getNombre_doc()%>"></td>
-                            </tr>
-                            <tr>
                                 <th>Id</th>
                                 <td><input readonly="" type="text" id="txtIdDocente" name="txtIdDocente" value="<%=docente.getIddocente()%>"></td>
                             </tr>
@@ -83,6 +79,9 @@
                                 <td><input type="text" id="txtCodigo" name="txtCodigo" value="<%=docente.getCodigo()%>"></td>
                             </tr>
                             <tr>
+                                <th>Nombre</th>
+                                <td><input readonly="" type="text" id="txtNombre" name="txtNombre" value="<%=docente.getNombre_doc()%>"></td>
+                            </tr><tr>
                                 <th>Email</th>
                                 <td><input type="email" id="txtCorreo" name="txtCorreo" value="<%=docente.getCorreo()%>"</td>
                             </tr>

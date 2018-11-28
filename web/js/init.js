@@ -6,8 +6,8 @@
         $('.tooltipped').tooltip();
         $('.modal').modal();
         $('.modal').modal();
-        $('input#input_text').characterCounter();
+        $('input#txtCodigoCurso').characterCounter();
         $('.collapsible').collapsible();
-        
+        $('select').formSelect();
     }); // end of document ready
 })(jQuery); // end of jQuery name space

@@ -1,3 +1,22 @@
+function validarCurso() {
+    var codigo = document.getElementById("txtCodigoCurso");
+    var grupo = document.getElementById("txtGrupo");
+    var ciclo = document.getElementById("txtCiclo");
+    var nombre = document.getElementById("txtNombre");
+    var carrera = document.getElementById("txtCarrera");
+    if (codigo.value === "" || grupo.value === "" || nombre.value === "") {
+        window.alert("Complete todos los campos!");
+        return false;
+    } else if (ciclo.value === "0" || carrera.value === "0") {
+        window.alert("Seleccione el ciclo o carrera a la que pertenece!");
+        return false;
+    } else if (codigo.value.length > 5) {
+        return false;
+    } else {
+        confirm("¿Desea Guardar?");
+    }
+}
+
 function validar() {
     var user = document.getElementById("txtUser");
     var uservalue = user.value;
@@ -13,7 +32,7 @@ function validar() {
     }
 
 }
-;
+
 function validarEditar() {
     var nombre = document.getElementById("txtNombre");
     var email = document.getElementById("txtCorreo");

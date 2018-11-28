@@ -32,7 +32,7 @@ public class bCurso {
     public bCurso(int idcurso, String codigo, String nombre, String grupo, int ciclo, int doc_iddocente, int car_idcarrera) {
         this.idcurso = idcurso;
         this.codigo = codigo;
-        this.nombre = nombre;
+        this.nombre = nombre.toUpperCase();
         this.grupo = grupo;
         this.ciclo = ciclo;
         this.doc_iddocente = doc_iddocente;
@@ -43,7 +43,7 @@ public class bCurso {
         try {
             this.idcurso = rs.getInt(1);
             this.codigo = rs.getString(2);
-            this.nombre = rs.getString(3);
+            this.nombre = rs.getString(3).toUpperCase();
             this.grupo = rs.getString(4);
             this.ciclo = rs.getInt(5);
             this.doc_iddocente = rs.getInt(6);
@@ -69,11 +69,11 @@ public class bCurso {
     }
 
     public String getNombre() {
-        return nombre;
+        return nombre.toUpperCase();
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre = nombre.toUpperCase();
     }
 
     public String getGrupo() {
@@ -107,12 +107,12 @@ public class bCurso {
     public void setCar_idcarrera(int car_idcarrera) {
         this.car_idcarrera = car_idcarrera;
     }
-    
+
     public Object[] getParametros() {
         Object[] os = new Object[7];
         os[0] = this.idcurso;
         os[1] = this.codigo;
-        os[2] = this.nombre;
+        os[2] = this.nombre.toUpperCase();
         os[3] = this.grupo;
         os[4] = this.ciclo;
         os[5] = this.doc_iddocente;

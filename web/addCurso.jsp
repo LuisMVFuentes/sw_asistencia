@@ -70,48 +70,55 @@
         <main>
             <div class="container z-depth-3">
                 <div class="container row" id="addCurso">
-                    <h3 class="center teal-text">Nuevo Curso</h3>
+                    <h3 class="center-align">Nuevo Curso</h3>
                 </div>
                 <div class="divider"></div>
                 <div class="container">
-                    <form action="controlador">
+                    <form action="controlador" onsubmit="return validarCurso()">
                         <table class="responsive-table">
                             <tr>
-                                <th>Codigo:</th>
-                                <td><input type="text" id="input_text" name="txtCodigo" data-length="5"></td>
-                            </tr>
-                            <tr>
-                                <th>Nombre:</th>
-                                <td><input type="text" name="txtNombre"></td>
-                            </tr>
-                            <tr>
-                                <th>Grupo:</th>
-                                <td><input type="text"  name="txtGrupo"></td>
-                            </tr>
-                            <tr>
-                                <th>Ciclo</th>
-                                <td><div class="input-field col s6">
-                                        <select name="txtCiclo" class="browser-default">
-                                            <option value="" disabled selected>-- Selecciona Ciclo --</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
+                                <td>
+                                    <div class="input-field">
+                                        <input type="text" id="txtCodigoCurso" name="txtCodigo" data-length="5">
+                                        <label for="txtCodigo">Codigo</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-field">
+                                        <input type="text" id="txtGrupo" name="txtGrupo">
+                                        <label for="txtGrupo">Grupo</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-field">
+                                        <select id="txtCiclo" name="txtCiclo">
+                                            <option value="0" disabled selected>Seleccione</option>
+                                            <option value="1">I° Ciclo</option>
+                                            <option value="2">II° Ciclo</option>
+                                            <option value="3">III° Ciclo</option>
+                                            <option value="4">IV° Ciclo</option>
+                                            <option value="5">V° Ciclo</option>
+                                            <option value="6">VI° Ciclo</option>
+                                            <option value="7">VII° Ciclo</option>
+                                            <option value="8">VIII° Ciclo</option>
+                                            <option value="9">IX° Ciclo</option>
+                                            <option value="10">X° Ciclo</option>
                                         </select>
+                                        <label for="txtCiclo">Ciclo</label>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Carrera:</th>
-                                <td><div class="input-field col s6">
-                                        <select name="txtCarrera" class="browser-default">
-                                            <option value="" disabled selected>-- Selecciona Carrera --</option>
+                                <td colspan="2">
+                                    <div class="input-field">
+                                        <input type="text" id="txtNombre" name="txtNombre">
+                                        <label for="txtNombre">Nombre del Curso</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-field">
+                                        <select id="txtCarrera" name="txtCarrera">
+                                            <option value="0" disabled selected>Seleccione</option>
                                             <%
                                                 for (Iterator it = carreras; it.hasNext();) {
                                                     bCarrera carrera = (bCarrera) it.next();
@@ -121,12 +128,13 @@
                                                 }
                                             %>         
                                         </select>
+                                        <label for="txtCarrera">Carrera</label>
                                     </div>
                                 </td>
                             </tr>
                         </table>
                         <div class="divider"></div>
-                        <div class="section">
+                        <div class="section center-align">
                             <input type="hidden" name="opc" value="51"><input class="waves-effect waves-green btn-flat" type="submit" value="Agregar">
                             <a href="controlador?opc=99" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                         </div>
