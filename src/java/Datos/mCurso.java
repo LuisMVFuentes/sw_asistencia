@@ -46,17 +46,4 @@ public class mCurso {
         }
         return cs;
     }
-
-    public static void main(String[] args) {
-        mCurso modelo = new mCurso();
-        random r = new random();
-        bCurso c = new bCurso(r.getInt(),
-                "1818A",
-                "FUNDAMENTOS DE BASE DE DATOS",
-                "18B",
-                4,
-                12345,
-                23456);
-        System.out.println(modelo.insertar(c));
-    }
 }

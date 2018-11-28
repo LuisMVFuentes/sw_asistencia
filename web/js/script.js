@@ -2,8 +2,26 @@ function validarSesion() {
     var fecha = document.getElementById("txtFecha");
     var hInicio = document.getElementById("txtHoraInicio");
     var hFin = document.getElementById("txtHoraFin");
-    if (fecha.value === "" || hInicio.value === 0 || hFin.value === 0) {
+    var horas = ["07:30", "08:20", "09:10", "10:00", "10:50", "11:40", "12:30",
+        "13:20", "14:10", "15:00", "15:50", "16:40", "17:30", "18:20",
+        "19:10", "20:00", "20:50", "21:40", "22:30", "23:20"];
+    var valFInicio = 0;
+    var valFTermino = 0;
+    for (var i = 0; i < horas.length; i++) {
+        if (hInicio.value === horas[i]) {
+            var valFInicio = i;
+        }
+        if (hFin.value === horas[i]) {
+            var valFTermino = i;
+        }
+    }
+
+
+    if (fecha.value === "" || hInicio.value.length === 0 || hFin.value.length === 0) {
         window.alert("Complete todos los campos!");
+        return false;
+    } else if (valFInicio === valFTermino || valFInicio > valFTermino) {
+        window.alert("La hora de finalización debe ser mayor que la de inicio!");
         return false;
     } else {
         confirm("¿Desea Guardar?");

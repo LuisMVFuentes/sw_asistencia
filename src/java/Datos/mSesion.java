@@ -2,6 +2,7 @@ package Datos;
 
 import Beans.bSesion;
 import Beans.bSesion_Estudiante;
+import Beans.tCursoSesion;
 import Utiles.Fecha;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,6 +42,31 @@ public class mSesion {
         String sql = "SELECT * FROM `sesion_has_estudiante` WHERE estudiante_codigo=" + estudiante_codigo;
         ResultSet rs = cado.Recuperar(sql);
         return sesionAlumno(rs);
+    }
+
+    public List<tCursoSesion> tCursoSesions(int idDocente) {
+        String sql = "SELECT curso.idcurso, curso.codigo AS \"codCurso\", curso.nombre AS "
+                + "\"nombCurso\", sesion.fecha, sesion.hora_inicio, sesion.hora_fin, curso.grupo, "
+                + "curso.ciclo, carrera.carrera, carrera.facultad FROM curso INNER JOIN sesion ON "
+                + "curso.idcurso = sesion.cur_idcurso INNER JOIN carrera ON curso.car_idcarrera = "
+                + "carrera.idcarrera WHERE curso.doc_iddocente = " + idDocente
+                + " ORDER BY sesion.fecha DESC";
+        ResultSet rs = cado.Recuperar(sql);
+        return tCursoSesions(rs);
+    }
+
+    private List<tCursoSesion> tCursoSesions(ResultSet rs) {
+        List<tCursoSesion> cses = new ArrayList<>();
+        try {
+            rs.beforeFirst();
+            while (rs.next()) {
+                tCursoSesion cs = new tCursoSesion(rs);
+                cses.add(cs);
+            }
+        } catch (SQLException e) {
+            cses = new ArrayList<>();
+        }
+        return cses;
     }
 
     private List<bSesion> list(ResultSet rs) {

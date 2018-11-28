@@ -110,7 +110,7 @@
                                         <div class="col l4 m6 s12 input-field">
                                             <i class="material-icons prefix">access_time</i>
                                             <select name="txtHoraInicio" id="txtHoraInicio">
-                                                <option value="0" selected="" disabled="">Seleccione</option>
+                                                <option value="" selected="" disabled="">Seleccione</option>
                                                 <optgroup label="Mañana">
                                                     <option value ="07:30">07:30</option>
                                                     <option value ="08:20">08:20</option>
@@ -143,7 +143,7 @@
                                         <div class="col l4 m6 s12 input-field">
                                             <i class="material-icons prefix">access_time</i>
                                             <select name="txtHoraFin" id="txtHoraFin">
-                                                <option value="0" selected="" disabled="">Seleccione</option>
+                                                <option value="" selected="" disabled="">Seleccione</option>
                                                 <optgroup label="Mañana">
                                                     <option value ="07:30">07:30</option>
                                                     <option value ="08:20">08:20</option>
