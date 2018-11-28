@@ -1,3 +1,15 @@
+function validarSesion() {
+    var fecha = document.getElementById("txtFecha");
+    var hInicio = document.getElementById("txtHoraInicio");
+    var hFin = document.getElementById("txtHoraFin");
+    if (fecha.value === "" || hInicio.value === 0 || hFin.value === 0) {
+        window.alert("Complete todos los campos!");
+        return false;
+    } else {
+        confirm("¿Desea Guardar?");
+    }
+}
+
 function validarCurso() {
     var codigo = document.getElementById("txtCodigoCurso");
     var grupo = document.getElementById("txtGrupo");

@@ -200,6 +200,21 @@ public class controlador extends HttpServlet {
                         }
                     }
                     break;
+                case 6:
+                    docente = (session.getAttribute("Docente") != null)
+                            ? (bDocente) session.getAttribute("Docente") : null;
+                    if (docente == null) {
+                        response.sendRedirect("controlador?opc=0");
+                    } else {
+                        int idCurso = Integer.parseInt(request.getParameter("txtIdCurso"));
+                        String fecha = request.getParameter("txtFecha");
+                        String hInicio = request.getParameter("txtHoraInicio");
+                        String hFin = request.getParameter("txtHoraFin");
+                        bSesion sesion = new bSesion(new random().getInt(), fecha, hInicio, hFin, idCurso);
+                        modelSesion.insertar(sesion);
+                        response.sendRedirect("controlador?opc=21&idCurso=" + idCurso);
+                    }
+                    break;
                 case 7:
                     docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;

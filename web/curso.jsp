@@ -90,6 +90,102 @@
                             <div class="chip"><b>Facultad: </b><%=carrera.getFacultad()%></div>
                             <div class="chip"><b>Grupo: </b><%=curso.getGrupo()%></div>
                         </div>
+                        <div class="section left-align">
+                            <!--Modal-->
+                            <a href="#modalNewSesion" class="waves-effect waves-green btn-flat modal-trigger"><i class="material-icons left">add</i>Agregar</a>
+                            <div id="modalNewSesion" class="modal">
+                                <form action="controlador" onsubmit="return validarSesion()">
+                                    <div class="modal-content">
+                                        <h3 class="center-align">Nueva Sesion</h3>
+                                        <div class="center-align">
+                                            <div class="chip"><b>Codigo: </b><%=curso.getCodigo()%></div>
+                                            <div class="chip"><b>Carrera: </b><%=curso.getNombre()%></div>
+                                            <div class="chip"><b>Grupo: </b><%=curso.getGrupo()%></div>
+                                        </div>
+                                        <div class="col l4 m6 s12 input-field">
+                                            <i class="material-icons prefix">today</i>
+                                            <input type="date" id="txtFecha" name="txtFecha" value="<%=new Fecha().getFecha("-")%>">
+                                            <label for="txtFecha">Fecha</label>
+                                        </div>
+                                        <div class="col l4 m6 s12 input-field">
+                                            <i class="material-icons prefix">access_time</i>
+                                            <select name="txtHoraInicio" id="txtHoraInicio">
+                                                <option value="0" selected="" disabled="">Seleccione</option>
+                                                <optgroup label="Mañana">
+                                                    <option value ="07:30">07:30</option>
+                                                    <option value ="08:20">08:20</option>
+                                                    <option value ="09:10">09:10</option>
+                                                    <option value ="10:00">10:00</option>
+                                                    <option value ="10:50">10:50</option>
+                                                    <option value ="11:40">11:40</option>    
+                                                </optgroup>
+                                                <optgroup label="Tarde">
+                                                    <option value ="12:30">12:30</option>
+                                                    <option value ="13:20">13:20</option>
+                                                    <option value ="14:10">14:10</option>
+                                                    <option value ="15:00">15:00</option>
+                                                    <option value ="15:50">15:50</option>
+                                                    <option value ="16:40">16:40</option>
+                                                    <option value ="17:30">17:30</option>
+                                                    <option value ="18:20">18:20</option>    
+                                                </optgroup>
+                                                <optgroup label="Noche">
+                                                    <option value ="19:10">19:10</option>
+                                                    <option value ="20:00">20:00</option>
+                                                    <option value ="20:50">20:50</option>
+                                                    <option value ="21:40">21:40</option>
+                                                    <option value ="22:30">22:30</option>
+                                                    <option value ="23:20">23:20</option>    
+                                                </optgroup>
+                                            </select>
+                                            <label for="txtHoraInicio">Hora de Inicio</label>
+                                        </div>
+                                        <div class="col l4 m6 s12 input-field">
+                                            <i class="material-icons prefix">access_time</i>
+                                            <select name="txtHoraFin" id="txtHoraFin">
+                                                <option value="0" selected="" disabled="">Seleccione</option>
+                                                <optgroup label="Mañana">
+                                                    <option value ="07:30">07:30</option>
+                                                    <option value ="08:20">08:20</option>
+                                                    <option value ="09:10">09:10</option>
+                                                    <option value ="10:00">10:00</option>
+                                                    <option value ="10:50">10:50</option>
+                                                    <option value ="11:40">11:40</option>    
+                                                </optgroup>
+                                                <optgroup label="Tarde">
+                                                    <option value ="12:30">12:30</option>
+                                                    <option value ="13:20">13:20</option>
+                                                    <option value ="14:10">14:10</option>
+                                                    <option value ="15:00">15:00</option>
+                                                    <option value ="15:50">15:50</option>
+                                                    <option value ="16:40">16:40</option>
+                                                    <option value ="17:30">17:30</option>
+                                                    <option value ="18:20">18:20</option>    
+                                                </optgroup>
+                                                <optgroup label="Noche">
+                                                    <option value ="19:10">19:10</option>
+                                                    <option value ="20:00">20:00</option>
+                                                    <option value ="20:50">20:50</option>
+                                                    <option value ="21:40">21:40</option>
+                                                    <option value ="22:30">22:30</option>
+                                                    <option value ="23:20">23:20</option>    
+                                                </optgroup>
+                                            </select>
+                                            <label for="txtHoraFin">Hora de Termino</label>
+                                        </div>
+                                            <br><br><br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="opc" value="6">
+                                        <input type="hidden" name="txtIdCurso" value="<%=curso.getIdcurso()%>">
+                                        <input type="submit" class="waves-effect waves-green btn-flat" value="Guardar">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                    </div>
+                                </form>
+                            </div>
+                            <!---->
+                            <a href="#" class="waves-effect waves-green btn-flat" target="_blank"><i class="material-icons left">insert_drive_file</i>Reporte</a>
+                        </div>
                         <%
                             int cont = 0;
                             for (Iterator it = itSesiones; it.hasNext();) {
