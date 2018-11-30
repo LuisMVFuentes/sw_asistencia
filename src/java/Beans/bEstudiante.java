@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 
 public class bEstudiante {
 
-    private int codigo;
+    private String codigo;
     private String nombre;
     private String correo;
     private String celular;
@@ -13,7 +13,7 @@ public class bEstudiante {
     public bEstudiante() {
     }
 
-    public bEstudiante(int codigo, String nombre, String correo, String celular, int curso_idcurso) {
+    public bEstudiante(String codigo, String nombre, String correo, String celular, int curso_idcurso) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.correo = correo;
@@ -23,7 +23,7 @@ public class bEstudiante {
 
     public bEstudiante(ResultSet rs) {
         try {
-            this.codigo = rs.getInt(1);
+            this.codigo = rs.getString(1);
             this.nombre = rs.getString(2);
             this.correo = rs.getString(3);
             this.celular = rs.getString(4);
@@ -32,11 +32,11 @@ public class bEstudiante {
         }
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

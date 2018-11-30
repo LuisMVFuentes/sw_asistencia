@@ -2,6 +2,7 @@ package Datos;
 
 import Beans.bSesion;
 import Beans.bSesion_Estudiante;
+import Beans.tAlumnoSesion;
 import Beans.tCursoSesion;
 import Utiles.Fecha;
 import java.sql.ResultSet;
@@ -33,7 +34,7 @@ public class mSesion {
     }
 
     public List<bSesion> sesiones(int idCurso) {
-        String sql = "SELECT * FROM `sesion` WHERE cur_idcurso = " + idCurso;
+        String sql = "SELECT * FROM `sesion` WHERE cur_idcurso = " + idCurso+" ORDER BY fecha DESC";
         ResultSet rs = cado.Recuperar(sql);
         return list(rs);
     }
@@ -53,6 +54,29 @@ public class mSesion {
                 + " ORDER BY sesion.fecha DESC";
         ResultSet rs = cado.Recuperar(sql);
         return tCursoSesions(rs);
+    }
+
+    public List<tAlumnoSesion> tAlumnoSesions(int idCurso) {
+        String sql = "SELECT estudiante.codigo, estudiante.nombre, sesion_has_estudiante.estado, "
+                + "sesion_has_estudiante.observacion, sesion.idsesiones, sesion.cur_idcurso AS "
+                + "'idcurso', sesion.fecha FROM estudiante INNER JOIN sesion_has_estudiante ON "
+                + "estudiante.codigo = sesion_has_estudiante.estudiante_codigo INNER JOIN sesion "
+                + "ON sesion_has_estudiante.sesion_idsesiones = sesion.idsesiones WHERE "
+                + "sesion.cur_idcurso = " + idCurso + " ORDER BY estudiante.nombre ";
+        ResultSet rs = cado.Recuperar(sql);
+        return tAlumnoSesions(rs);
+    }
+
+    public List<tAlumnoSesion> tAlumnoSesions(ResultSet rs) {
+        List<tAlumnoSesion> ases = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                tAlumnoSesion as = new tAlumnoSesion(rs);
+                ases.add(as);
+            }
+        } catch (Exception e) {
+        }
+        return ases;
     }
 
     private List<tCursoSesion> tCursoSesions(ResultSet rs) {
@@ -95,4 +119,12 @@ public class mSesion {
         }
         return ses;
     }
+
+    public static void main(String[] args) {
+        List<tAlumnoSesion> ases = new mSesion().tAlumnoSesions(34567);
+        for (int i = 0; i < ases.size(); i++) {
+            System.out.println(ases.get(i).toString());
+        }
+    }
+
 }

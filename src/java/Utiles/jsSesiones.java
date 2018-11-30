@@ -119,6 +119,7 @@ public class jsSesiones {
         for (int i = 0; i < cses.size(); i++) {
             string += (i != 0 && i < cses.size()) ? ", " : "";
             string += "    {\n"
+                    + "        idCurso:" + cses.get(i).getIdcurso() + ",\n"
                     + "        Id: '" + cses.get(i).getIdsesion() + "',\n"
                     + "        Codigo: '" + cses.get(i).getCodCurso() + "',\n"
                     + "        Nombre: '" + cses.get(i).getNombCurso() + "',\n"
@@ -159,11 +160,6 @@ public class jsSesiones {
             ses = agregar(ses, getHoras()[j]);
         }
         return varListado(ses);
-    }
-
-    public static void main(String[] args) {
-        List<tCursoSesion> cses = new mSesion().tCursoSesions(12345);
-        System.out.println(new jsSesiones().getRangoHoras(cses));
     }
 
     public String getScript(int idDocente) {
@@ -228,7 +224,11 @@ public class jsSesiones {
                 + "                                         +'<hr> Nombre: '+cursosGuias[i].Nombre+ '<hr>'\n"
                 + "                                         +'Escuela: '+cursosGuias[i].Carrera+' - Facultad: '+cursosGuias[i].Facultad);\n"
                 + "                                var texto1 = document.createTextNode(cursosGuias[i].Codigo);\n"
-                + "                                td1.appendChild(texto1);\n"
+                + "                                var link = document.createElement('a');\n"
+                + "                                link.setAttribute('href', 'controlador?opc=21&idCurso='+cursosGuias[i].idCurso);\n"
+                + "                                link.setAttribute('class', 'white-text center-align');\n"
+                + "                                link.appendChild(texto1);\n"
+                + "                                td1.appendChild(link);\n"
                 + "                                tr1.appendChild(td1);\n"
                 + "                                tablacasillero.appendChild(tr1);\n"
                 + "                                casillero1.appendChild(tablacasillero);\n"

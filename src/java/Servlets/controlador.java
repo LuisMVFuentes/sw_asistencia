@@ -27,6 +27,7 @@ public class controlador extends HttpServlet {
             mCurso modelCurso = new mCurso();
             mCarrera modelCarrera = new mCarrera();
             mSesion modelSesion = new mSesion();
+            mEstudiante modelEstudiante = new mEstudiante();
             random r = new random();
             switch (opc) {
                 case 0:
@@ -103,8 +104,7 @@ public class controlador extends HttpServlet {
                             && session.getAttribute("Sesiones") != null) {
                         rd = request.getRequestDispatcher("alumnos.jsp");
                         bCurso curso = (bCurso) request.getSession().getAttribute("CursoSel");
-                        mEstudiante me = new mEstudiante();
-                        List<bEstudiante> lista = me.listar(curso.getIdcurso());
+                        List<bEstudiante> lista = modelEstudiante.listar(curso.getIdcurso());
                         session.setAttribute("Estudiantes", lista.iterator());
                         rd.forward(request, response);
                     } else {
@@ -212,8 +212,17 @@ public class controlador extends HttpServlet {
                         String hInicio = request.getParameter("txtHoraInicio");
                         String hFin = request.getParameter("txtHoraFin");
                         bSesion sesion = new bSesion(new random().getInt(), fecha, hInicio, hFin, idCurso);
-                        modelSesion.insertar(sesion);
-                        response.sendRedirect("controlador?opc=21&idCurso=" + idCurso);
+                        if (modelSesion.insertar(sesion)) {
+                            List<bEstudiante> lEstudiantes = modelEstudiante.listar(idCurso);
+                            if (!lEstudiantes.isEmpty()) {
+                                for (int i = 0; i < lEstudiantes.size(); i++) {
+                                    bSesion_Estudiante se
+                                            = new bSesion_Estudiante(sesion.getIdsesiones(), lEstudiantes.get(i).getCodigo(), "F", "");
+                                    modelSesion.insertar(se);
+                                }
+                            }
+                            response.sendRedirect("controlador?opc=21&idCurso=" + idCurso);
+                        }
                     }
                     break;
                 case 7:
