@@ -144,11 +144,32 @@ public class jsSesiones {
         return s;
     }
 
+    public String getRangoHoras(List<tCursoSesion> cses) {
+        int hMenor = getHoras().length, hMayor = 0;
+        for (int i = 0; i < cses.size(); i++) {
+            if (getUbicacion(cses.get(i).getHora_inicio()) < hMenor) {
+                hMenor = getUbicacion(cses.get(i).getHora_inicio());
+            }
+            if (getUbicacion(cses.get(i).getHora_fin()) > hMayor) {
+                hMayor = getUbicacion(cses.get(i).getHora_fin());
+            }
+        }
+        String[] ses = new String[0];
+        for (int j = hMenor; j <= hMayor; j++) {
+            ses = agregar(ses, getHoras()[j]);
+        }
+        return varListado(ses);
+    }
+
+    public static void main(String[] args) {
+        List<tCursoSesion> cses = new mSesion().tCursoSesions(12345);
+        System.out.println(new jsSesiones().getRangoHoras(cses));
+    }
+
     public String getScript(int idDocente) {
         List<tCursoSesion> cses = new mSesion().tCursoSesions(idDocente);
         String s = "var diasdelasemana = [" + new jsSesiones().diasdelaseman(cses) + "];\n"
-                + "var horasdelasemana = ['07:30', '08:20', '09:10', '10:00', '10:50', '11:40', '12:30', '13:20',\n"
-                + "    '14:10', '15:00', '15:50', '16:40', '17:30', '18:20', '19:10', '20:00', '20:50'];\n"
+                + "var horasdelasemana = [" + new jsSesiones().getRangoHoras(cses) + "];\n"
                 + "var cursosGuias = [\n"
                 + getSesiones(cses)
                 + "];\n"
