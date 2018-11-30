@@ -36,6 +36,7 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet">
         <link href="css/style.css" type="text/css" rel="stylesheet">
         <script src="js/script.js"></script>
+
     </head>
     <body>
         <header>
@@ -173,7 +174,7 @@
                                             </select>
                                             <label for="txtHoraFin">Hora de Termino</label>
                                         </div>
-                                            <br><br><br>
+                                        <br><br><br>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="opc" value="6">
