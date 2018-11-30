@@ -45,7 +45,7 @@ public class mSesion {
     }
 
     public List<tCursoSesion> tCursoSesions(int idDocente) {
-        String sql = "SELECT curso.idcurso, curso.codigo AS \"codCurso\", curso.nombre AS "
+        String sql = "SELECT curso.idcurso, sesion.idsesiones AS \"idsesion\", curso.codigo AS \"codCurso\", curso.nombre AS "
                 + "\"nombCurso\", sesion.fecha, sesion.hora_inicio, sesion.hora_fin, curso.grupo, "
                 + "curso.ciclo, carrera.carrera, carrera.facultad FROM curso INNER JOIN sesion ON "
                 + "curso.idcurso = sesion.cur_idcurso INNER JOIN carrera ON curso.car_idcarrera = "

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 public class tCursoSesion {
 
     private int idcurso;
+    private int idsesion;
     private String codCurso;
     private String nombCurso;
     private String fecha;
@@ -25,21 +26,23 @@ public class tCursoSesion {
     public tCursoSesion(ResultSet rs) {
         try {
             this.idcurso = rs.getInt(1);
-            this.codCurso = rs.getString(2);
-            this.nombCurso = rs.getString(3).toUpperCase();
-            this.fecha = rs.getDate(4).toString();
-            this.hora_inicio = rs.getString(5);
-            this.hora_fin = rs.getString(6);
-            this.grupo = rs.getString(7).toUpperCase();
-            this.ciclo = rs.getInt(8);
-            this.carrera = rs.getString(9).toUpperCase();
-            this.facultad = rs.getString(10).toUpperCase();
+            this.idsesion = rs.getInt(2);
+            this.codCurso = rs.getString(3);
+            this.nombCurso = rs.getString(4).toUpperCase();
+            this.fecha = rs.getDate(5).toString();
+            this.hora_inicio = rs.getString(6);
+            this.hora_fin = rs.getString(7);
+            this.grupo = rs.getString(8).toUpperCase();
+            this.ciclo = rs.getInt(9);
+            this.carrera = rs.getString(10).toUpperCase();
+            this.facultad = rs.getString(11).toUpperCase();
         } catch (Exception e) {
         }
     }
 
-    public tCursoSesion(int idcurso, String codCurso, String nombCurso, String fecha, String hora_inicio, String hora_fin, String grupo, int ciclo, String carrera, String facultad) {
+    public tCursoSesion(int idcurso, int idsesion, String codCurso, String nombCurso, String fecha, String hora_inicio, String hora_fin, String grupo, int ciclo, String carrera, String facultad) {
         this.idcurso = idcurso;
+        this.idsesion = idsesion;
         this.codCurso = codCurso;
         this.nombCurso = nombCurso.toUpperCase();
         this.fecha = fecha;
@@ -57,6 +60,14 @@ public class tCursoSesion {
 
     public void setFacultad(String facultad) {
         this.facultad = facultad;
+    }
+
+    public int getIdsesion() {
+        return idsesion;
+    }
+
+    public void setIdsesion(int idsesion) {
+        this.idsesion = idsesion;
     }
 
     public int getIdcurso() {
@@ -132,17 +143,18 @@ public class tCursoSesion {
     }
 
     public Object[] getParametros() {
-        Object[] os = new Object[10];
+        Object[] os = new Object[11];
         os[0] = this.idcurso;
-        os[1] = this.codCurso;
-        os[2] = this.nombCurso;
-        os[3] = this.fecha;
-        os[4] = this.hora_inicio;
-        os[5] = this.hora_fin;
-        os[6] = this.grupo;
-        os[7] = this.ciclo;
-        os[8] = this.carrera;
-        os[9] = this.facultad;
+        os[1] = this.idsesion;
+        os[2] = this.codCurso;
+        os[3] = this.nombCurso;
+        os[4] = this.fecha;
+        os[5] = this.hora_inicio;
+        os[6] = this.hora_fin;
+        os[7] = this.grupo;
+        os[8] = this.ciclo;
+        os[9] = this.carrera;
+        os[10] = this.facultad;
         return os;
     }
 
@@ -155,4 +167,5 @@ public class tCursoSesion {
         }
         return s;
     }
+
 }

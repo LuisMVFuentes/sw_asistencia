@@ -1,16 +1,7 @@
 package Servlets;
 
-import Beans.bCarrera;
-import Beans.bCurso;
-import Beans.bDocente;
-import Beans.bEstudiante;
-import Beans.bSesion;
-import Beans.bSesion_Estudiante;
-import Datos.mCarrera;
-import Datos.mCurso;
-import Datos.mDocente;
-import Datos.mEstudiante;
-import Datos.mSesion;
+import Beans.*;
+import Datos.*;
 import Utiles.random;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,13 +38,23 @@ public class controlador extends HttpServlet {
                     List<bDocente> ds = modelDocente.login(user, pass);
                     bDocente docente = (session.getAttribute("Docente") != null)
                             ? (bDocente) session.getAttribute("Docente") : null;
+                    Iterator<tCursoSesion> itCses = (session.getAttribute("tCursoSesiones") != null)
+                            ? (Iterator<tCursoSesion>) session.getAttribute("tCursoSesiones") : null;
+                    /*
                     Iterator<bCurso> itCursos = (session.getAttribute("Cursos") != null)
                             ? (Iterator<bCurso>) session.getAttribute("Cursos") : null;
+                     */
                     if (ds.size() == 1) {
+                        /*
                         List<bCurso> cs = modelCurso.cursos_docente((ds.get(0)).getIddocente());
+                         */
+                        List<tCursoSesion> cses = modelSesion.tCursoSesions(ds.get(0).getIddocente());
                         rd = request.getRequestDispatcher("home.jsp");
                         session.setAttribute("Docente", ds.get(0));
+                        session.setAttribute("tCursoSesiones", cses.iterator());
+                        /*
                         session.setAttribute("Cursos", cs.iterator());
+                         */
                         rd.forward(request, response);
                     } else {
                         response.sendRedirect("controlador?opc=0");

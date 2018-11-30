@@ -1,3 +1,5 @@
+<%@page import="Utiles.jsSesiones"%>
+<%@page import="Beans.tCursoSesion"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Beans.bDocente"%>
@@ -5,6 +7,7 @@
 
 <%
     Iterator<bCurso> itCursos = (new ArrayList<bCurso>()).iterator();
+    Iterator<tCursoSesion> itCses = (new ArrayList<tCursoSesion>()).iterator();
     bDocente docente = (session.getAttribute("Docente") != null)
             ? (bDocente) session.getAttribute("Docente") : null;
     if (session.getAttribute("Docente") == null) {
@@ -12,6 +15,8 @@
     } else {
         itCursos = (session.getAttribute("Cursos") != null)
                 ? (Iterator<bCurso>) session.getAttribute("Cursos") : itCursos;
+        itCses = (session.getAttribute("tCursoSesiones") != null)
+                ? (Iterator<tCursoSesion>) session.getAttribute("tCursoSesiones") : itCses;
     }
 %>
 
@@ -34,7 +39,7 @@
             <!--Navbar-->
             <nav class="black" role="navigation">
                 <div class="nav-wrapper container">
-                    
+
                     <ul class="left">
                         <li href="#" data-target="slide-out" class="sidenav-trigger btn teal white-text"><i class="material-icons">menu</i></a></li>
                         </li>
@@ -77,35 +82,9 @@
                 </div>
                 <div class="col l9">
                     <div class="card-panel z-depth-3">
-                        <h4 class="center teal-text">Cursos</h4>
-                        <div class="section left-align">
-                            <a href="controlador?opc=5" class="waves-effect waves-green btn-flat"><i class="material-icons left">add</i>Agregar</a>
-                            <a href="controlador?opc=8" class="waves-effect waves-green btn-flat" target="_blank"><i class="material-icons left">insert_drive_file</i>Reporte</a>
-                        </div>
-                        <%int cont = 0;
-                            for (Iterator it = itCursos; it.hasNext();) {
-                                bCurso curso = (bCurso) it.next();
-                        %>
-                        <div class="card teal">
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4"><%=curso.getNombre()%><i class="material-icons right">more_vert</i></span>
-                                <p><a class="white-text" href="controlador?opc=21&idCurso=<%=curso.getIdcurso()%>">Ver más</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                                <p><b>Nombre: </b><%=curso.getNombre()%></p>
-                                <p><b>Codigo: </b><%=curso.getCodigo()%>; <b>Ciclo: </b><%=curso.getCiclo()%>; <b>Carrera: </b><%=curso.getCar_idcarrera()%>; <b>Grupo: </b><%=curso.getGrupo()%><p>
-                            </div>
-                        </div>
-                        <%
-                                cont++;
-                            }
-                            if (cont == 0) {
-                        %>
-
-                        <%
-                            }
-                        %>
+                        <h4 class="center teal-text"><i class="material-icons">date_range</i> Sesiones</h4>
+                        <table class="responsive-table" id="horario"></table>
+                        <script><%=new jsSesiones().getScript(docente.getIddocente())%></script>
                     </div>
                 </div>
             </div>
